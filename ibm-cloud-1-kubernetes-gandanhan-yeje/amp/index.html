@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html ⚡>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+    <title>[IBM Cloud] IBM클라우드 쿠버네티스 서비스와 Kubernetes 배포 하기</title>
+
+    <meta name="description" content="간단한 노드서버를 도커허브에 푸시하여, IBM클라우드 쿠버네티스를 이용하여 배포하는 예제" />
+    <link rel="canonical" href="https://gyutaehan.github.io/ibm-cloud-1-kubernetes-gandanhan-yeje/" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    
+    <meta property="og:site_name" content="코딩터" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="[IBM Cloud] IBM클라우드 쿠버네티스 서비스와 Kubernetes 배포 하기" />
+    <meta property="og:description" content="간단한 노드서버를 도커허브에 푸시하여, IBM클라우드 쿠버네티스를 이용하여 배포하는 예제" />
+    <meta property="og:url" content="https://gyutaehan.github.io/ibm-cloud-1-kubernetes-gandanhan-yeje/" />
+    <meta property="article:published_time" content="2020-08-02T08:36:12.000Z" />
+    <meta property="article:modified_time" content="2020-08-02T08:44:56.000Z" />
+    <meta property="article:tag" content="IBM Cloud" />
+    <meta property="article:tag" content="Kubernetes" />
+    <meta property="article:tag" content="k8s" />
+    <meta property="article:tag" content="IBM CLOUDERS" />
+    
+    <meta property="article:publisher" content="https://www.facebook.com/100017130408671" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="[IBM Cloud] IBM클라우드 쿠버네티스 서비스와 Kubernetes 배포 하기" />
+    <meta name="twitter:description" content="간단한 노드서버를 도커허브에 푸시하여, IBM클라우드 쿠버네티스를 이용하여 배포하는 예제" />
+    <meta name="twitter:url" content="https://gyutaehan.github.io/ibm-cloud-1-kubernetes-gandanhan-yeje/" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Gyutae Han" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="IBM Cloud, Kubernetes, k8s, IBM CLOUDERS" />
+    <meta name="twitter:site" content="@trapkka997" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "코딩터",
+        "url": "https://gyutaehan.github.io/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://gyutaehan.github.io/favicon.ico",
+            "width": 48,
+            "height": 48
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Gyutae Han",
+        "url": "https://gyutaehan.github.io/author/gyutae/",
+        "sameAs": [
+            "https://gyutaehan.me"
+        ]
+    },
+    "headline": "[IBM Cloud] IBM클라우드 쿠버네티스 서비스와 Kubernetes 배포 하기",
+    "url": "https://gyutaehan.github.io/ibm-cloud-1-kubernetes-gandanhan-yeje/",
+    "datePublished": "2020-08-02T08:36:12.000Z",
+    "dateModified": "2020-08-02T08:44:56.000Z",
+    "keywords": "IBM Cloud, Kubernetes, k8s, IBM CLOUDERS",
+    "description": "시작하기 전에\n * Kubernetes Service [/kubernetes-service-create/]\n * Git\n * Docker\n\nnode서버 구축\n도커에서 실행하기 위한 노드서버 실행을 위한 server.js 와 package.json, Dockerfile 을 작성을 합니다.\n\napp/server.js\nimport * as http from &#x27;http&#x27;;\n\nconst port &#x3D; 3001;\nconst hostname &#x3D; &#x27;0.0.0.0&#x27;\n\nhttp.createServer((req, res) &#x3D;&gt; {\n  res.writeHead(200, {&#x27;Content-Type&#x27;: &#x27;text/plain&#x27;});\n  res.end(&#x27;Hello, Node!\\n&#x27;);\n}).listen(port, hostname, console.log(&#x60;Server running at http://${hostname}:${port}/&#x60;)\n);\n\n\napp/package.json\n{\n  &quot;name&quot;: &quot;hello-n",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://gyutaehan.github.io/"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 4.15" />
+    <link rel="alternate" type="application/rss+xml" title="코딩터" href="https://gyutaehan.github.io/rss/" />
+
+    <style amp-custom>
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    html {
+        overflow-x: hidden;
+        overflow-y: scroll;
+        font-size: 62.5%;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    }
+
+    body {
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
+        color: #3a4145;
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+        font-size: 1.7rem;
+        line-height: 1.55em;
+        font-weight: 400;
+        font-style: normal;
+        background: #fff;
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    p,
+    ul,
+    ol,
+    li,
+    dl,
+    dd,
+    hr,
+    pre,
+    form,
+    table,
+    video,
+    figure,
+    figcaption,
+    blockquote {
+        margin: 0;
+        padding: 0;
+    }
+
+    ul[class],
+    ol[class] {
+        padding: 0;
+        list-style: none;
+    }
+
+    img {
+        display: block;
+        max-width: 100%;
+    }
+
+    input,
+    button,
+    select,
+    textarea {
+        font: inherit;
+        -webkit-appearance: none;
+    }
+
+    fieldset {
+        margin: 0;
+        padding: 0;
+        border: 0;
+    }
+
+    label {
+        display: block;
+        font-size: 0.9em;
+        font-weight: 700;
+    }
+
+    hr {
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 1px;
+        border: 0;
+        border-top: 1px solid currentcolor;
+        opacity: 0.1;
+    }
+
+    ::selection {
+        text-shadow: none;
+        background: #cbeafb;
+    }
+
+    mark {
+        background-color: #fdffb6;
+    }
+
+    small {
+        font-size: 80%;
+    }
+
+    sub,
+    sup {
+        position: relative;
+        font-size: 75%;
+        line-height: 0;
+        vertical-align: baseline;
+    }
+    sup {
+        top: -0.5em;
+    }
+    sub {
+        bottom: -0.25em;
+    }
+
+    ul li + li {
+        margin-top: 0.6em;
+    }
+
+    a {
+        color: var(--ghost-accent-color, #1292EE);
+        text-decoration-skip-ink: auto;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin: 0;
+        font-weight: 700;
+        color: #121212;
+        line-height: 1.4em;
+    }
+
+    h1 {
+        font-size: 3.4rem;
+        line-height: 1.1em;
+    }
+
+    h2 {
+        font-size: 2.4rem;
+        line-height: 1.2em;
+    }
+
+    h3 {
+        font-size: 1.8rem;
+    }
+
+    h4 {
+        font-size: 1.7rem;
+    }
+
+    h5 {
+        font-size: 1.6rem;
+    }
+
+    h6 {
+        font-size: 1.6rem;
+    }
+
+    amp-img {
+        height: 100%;
+        width: 100%;
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    amp-img img {
+        object-fit: cover;
+    }
+
+    .page-header {
+        padding: 50px 5vmin 30px;
+        text-align: center;
+        font-size: 2rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .page-header a {
+        color: #121212;
+        font-weight: 700;
+        text-decoration: none;
+        font-size: 1.6rem;
+        letter-spacing: -0.1px;
+    }
+
+    .post {
+        max-width: 680px;
+        margin: 0 auto;
+    }
+
+    .post-header {
+        margin: 0 5vmin 5vmin;
+        text-align: center;
+    }
+
+    .post-meta {
+        margin: 1rem 0 0 0;
+        text-transform: uppercase;
+        color: #738a94;
+        font-weight: 500;
+        font-size: 1.3rem;
+    }
+
+    .post-image {
+        margin: 0 0 5vmin;
+    }
+
+    .post-image img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    .post-content {
+        padding: 0 5vmin;
+    }
+
+    .post-content > * + * {
+        margin-top: 1.5em;
+    }
+
+    .post-content [id]:not(:first-child) {
+        margin: 2em 0 0;
+    }
+
+    .post-content > [id] + * {
+        margin-top: 1rem;
+    }
+
+    .post-content [id] + .kg-card,
+    .post-content blockquote + .kg-card {
+        margin-top: 40px;
+    }
+
+    .post-content > ul,
+    .post-content > ol,
+    .post-content > dl {
+        padding-left: 1.9em;
+    }
+
+    .post-content hr {
+        margin-top: 40px;
+    }
+
+    .post .post-content hr + * {
+        margin-top: 40px;
+    }
+
+    .post-content amp-img {
+        background-color: #f8f8f8;
+    }
+
+    .post-content blockquote {
+        position: relative;
+        font-style: italic;
+    }
+
+    .post-content blockquote::before {
+        content: "";
+        position: absolute;
+        left: -1.5em;
+        top: 0;
+        bottom: 0;
+        width: 0.3rem;
+        background: var(--ghost-accent-color, #1292EE);
+    }
+
+    .post-content :not(.kg-card):not([id]) + .kg-card {
+        margin-top: 40px;
+    }
+
+    .post-content .kg-card + :not(.kg-card) {
+        margin-top: 40px;
+    }
+
+    .kg-card figcaption {
+        padding: 1.5rem 1.5rem 0;
+        text-align: center;
+        font-weight: 500;
+        font-size: 1.3rem;
+        line-height: 1.4em;
+        opacity: 0.6;
+    }
+
+    .kg-card figcaption strong {
+        color: rgba(0,0,0,0.8);
+    }
+
+    .post-content :not(pre) code {
+        vertical-align: middle;
+        padding: 0.15em 0.4em 0.15em;
+        border: #e1eaef 1px solid;
+        font-weight: 400;
+        font-size: 0.9em;
+        line-height: 1em;
+        color: #15171a;
+        background: #f0f6f9;
+        border-radius: 0.25em;
+    }
+
+    .post-content > pre {
+        overflow: scroll;
+        padding: 16px 20px;
+        color: #fff;
+        background: #1F2428;
+        border-radius: 5px;
+        box-shadow: 0 2px 6px -2px rgba(0,0,0,.1), 0 0 1px rgba(0,0,0,.4);
+    }
+
+    .kg-embed-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .kg-image-card img {
+        margin: auto;
+    }
+
+    .kg-gallery-card + .kg-gallery-card {
+        margin-top: 0.75em;
+    }
+
+    .kg-gallery-container {
+        position: relative;
+    }
+
+    .kg-gallery-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .kg-gallery-image {
+        width: 100%;
+        height: 100%;
+    }
+
+    .kg-gallery-row:not(:first-of-type) {
+        margin: 0.75em 0 0 0;
+    }
+
+    .kg-gallery-image:not(:first-of-type) {
+        margin: 0 0 0 0.75em;
+    }
+
+    .kg-bookmark-card,
+    .kg-bookmark-publisher {
+        position: relative;
+    }
+
+    .kg-bookmark-container,
+    .kg-bookmark-container:hover {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row-reverse;
+        color: currentColor;
+        background: rgba(255,255,255,0.6);
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+        text-decoration: none;
+        border-radius: 5px;
+        box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.1), 0 0 1px rgba(0, 0, 0, 0.4);
+        overflow: hidden;
+    }
+
+    .kg-bookmark-content {
+        flex-basis: 0;
+        flex-grow: 999;
+        padding: 20px;
+        order: 1;
+    }
+
+    .kg-bookmark-title {
+        font-weight: 600;
+        font-size: 1.5rem;
+        line-height: 1.3em;
+    }
+
+    .kg-bookmark-description {
+        display: -webkit-box;
+        max-height: 45px;
+        margin: 0.5em 0 0 0;
+        font-size: 1.4rem;
+        line-height: 1.55em;
+        overflow: hidden;
+        opacity: 0.8;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
+    .kg-bookmark-metadata {
+        margin-top: 20px;
+    }
+
+    .kg-bookmark-metadata {
+        display: flex;
+        align-items: center;
+        font-weight: 500;
+        font-size: 1.3rem;
+        line-height: 1.3em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .kg-bookmark-description {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+    }
+
+    .kg-bookmark-metadata amp-img {
+        width: 18px;
+        height: 18px;
+        max-width: 18px;
+        max-height: 18px;
+        margin-right: 10px;
+    }
+
+    .kg-bookmark-thumbnail {
+        display: flex;
+        flex-basis: 20rem;
+        flex-grow: 1;
+        justify-content: flex-end;
+    }
+
+    .kg-bookmark-thumbnail amp-img {
+        max-height: 200px;
+    }
+
+    .kg-bookmark-author {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .kg-bookmark-publisher::before {
+        content: "•";
+        margin: 0 .5em;
+    }
+
+    .kg-width-full.kg-card-hascaption {
+        display: grid;
+        grid-template-columns: inherit;
+    }
+
+    .post-content table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    .post-content th {
+        padding: 0.5em 0.8em;
+        text-align: left;
+        font-size: .75em;
+        text-transform: uppercase;
+    }
+
+    .post-content td {
+        padding: 0.4em 0.7em;
+    }
+
+    .post-content tbody tr:nth-child(2n + 1) {
+        background-color: rgba(0,0,0,0.1);
+        padding: 1px;
+    }
+
+    .post-content tbody tr:nth-child(2n + 2) td:last-child {
+        box-shadow:
+            inset 1px 0 rgba(0,0,0,0.1),
+            inset -1px 0 rgba(0,0,0,0.1);
+    }
+
+    .post-content tbody tr:nth-child(2n + 2) td {
+        box-shadow: inset 1px 0 rgba(0,0,0,0.1);
+    }
+
+    .post-content tbody tr:last-child {
+        border-bottom: 1px solid rgba(0,0,0,.1);
+    }
+
+    .page-footer {
+        padding: 60px 5vmin;
+        margin: 60px auto 0;
+        text-align: center;
+        background-color: #f8f8f8;
+    }
+
+    .page-footer h3 {
+        margin: 0.5rem 0 0 0;
+    }
+
+    .page-footer p {
+        max-width: 500px;
+        margin: 1rem auto 1.5rem;
+        font-size: 1.7rem;
+        line-height: 1.5em;
+        color: rgba(0,0,0,0.6)
+    }
+
+    .powered {
+        display: inline-flex;
+        align-items: center;
+        margin: 30px 0 0;
+        padding: 6px 9px 6px 6px;
+        border: rgba(0,0,0,0.1) 1px solid;
+        font-size: 12px;
+        line-height: 12px;
+        letter-spacing: -0.2px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+        font-weight: 500;
+        color: #222;
+        text-decoration: none;
+        background: #fff;
+        border-radius: 6px;
+    }
+
+    .powered svg {
+        height: 16px;
+        width: 16px;
+        margin: 0 6px 0 0;
+    }
+
+    @media (max-width: 600px) {
+        body {
+            font-size: 1.6rem;
+        }
+        h1 {
+            font-size: 3rem;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+        }
+    }
+
+    @media (max-width: 400px) {
+        h1 {
+            font-size: 2.6rem;
+            line-height: 1.15em;
+        }
+        h2 {
+            font-size: 2rem;
+            line-height: 1.2em;
+        }
+        h3 {
+            font-size: 1.7rem;
+        }
+    }
+
+    :root {--ghost-accent-color: #FF1A75;}
+    </style>
+
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+
+    
+
+</head>
+
+<body class="amp-template">
+    <header class="page-header">
+        <a href="https://gyutaehan.github.io">
+                코딩터
+        </a>
+    </header>
+
+    <main class="content" role="main">
+        <article class="post">
+
+            <header class="post-header">
+                <h1 class="post-title">[IBM Cloud] IBM클라우드 쿠버네티스 서비스와 Kubernetes 배포 하기</h1>
+                <section class="post-meta">
+                    Gyutae Han -
+                    <time class="post-date" datetime="2020-08-02">02 Aug 2020</time>
+                </section>
+            </header>
+            <section class="post-content">
+
+                <h1 id>시작하기 전에</h1>
+<ul>
+<li><a href="/kubernetes-service-create/">Kubernetes Service</a></li>
+<li>Git</li>
+<li>Docker</li>
+</ul>
+<h1 id="node">node서버 구축</h1>
+<p>도커에서 실행하기 위한 노드서버 실행을 위한 <code>server.js</code>  와 <code>package.json</code>, <code>Dockerfile</code>  을 작성을 합니다.</p>
+<h3 id="appserverjs">app/server.js</h3>
+<pre><code class="language-javascript">import * as http from 'http';
+
+const port = 3001;
+const hostname = '0.0.0.0'
+
+http.createServer((req, res) =&gt; {
+  res.writeHead(200, {'Content-Type': 'text/plain'});
+  res.end('Hello, Node!\n');
+}).listen(port, hostname, console.log(`Server running at http://${hostname}:${port}/`)
+);
+</code></pre>
+<h3 id="apppackagejson">app/package.json</h3>
+<pre><code class="language-json">{
+  "name": "hello-node",
+  "version": "1.0.0",
+  "description": "nodejs server",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" &amp;&amp; exit 1"
+  },
+  "author": "gyutae.h",
+  "license": "ISC"
+}
+</code></pre>
+<h2 id="appdockerfile">app/Dockerfile</h2>
+<pre><code class="language-dockerfile">FROM node:12
+
+WORKDIR /app
+
+COPY package*.json .
+RUN npm install
+
+COPY . .
+
+EXPOSE 3001 
+
+CMD ["node", "server.js"]
+
+</code></pre>
+<p><code>Dockerfile</code>은 빌드를 하면 도커 이미지를 만들 수 있는데, 그 이미지에 대한 설정을 기술한 <strong>파일</strong>입니다.</p>
+<p>명령어들에 관해선 다른 포스트에서 더욱 자세히 다룰 예정입니다.</p>
+<h2 id>빌드를 해보고 실행해보기</h2>
+<pre><code class="language-bash">$ docker build -t hellonode:v0 .
+$ docker run -p 3001:3001 hellonode:v0
+</code></pre>
+<p><a href="http://localhost:3001">http://localhost:3001</a>에 접속을 하면 다음과 같은 화면이 나오는 것을 확인할 수 있습니다.</p>
+<pre><code>Hello, Node!
+</code></pre>
+<h2 id>도커 허브 리포지토리에 푸시하기</h2>
+<pre><code class="language-shell"># 만약 docker계정이 kantmuyu라면, &lt;docker 계정&gt; 대신 kantmuyu가 들어가면 됩니다.
+$ docker tag hellonode:v0 &lt;docker 계정&gt;/hellonode:v0
+$ docker push &lt;docker 계정&gt;/hellonode:v0
+</code></pre>
+<p>쿠버네티스와의 연동을 위해 본인의 도커 허브 리포지토리에 이미지를 푸시해줍니다.<br />
+푸시가 되었는지 확인은 <a href="https://hub.docker.com/">Docker Hub</a>에서 할 수 있습니다.</p>
+<h1 id>쿠버네티스와 연동하기</h1>
+<pre><code class="language-shell"># 네임스페이스 생성
+$ kubectl create namespace hellonode-ns
+</code></pre>
+<p>생성을 했다면 <code>get namespace</code>명령어로 생성이 되었는지 확인이 가능합니다.</p>
+<pre><code class="language-shell"># namespace 리스트 확인
+$ kubectl get namespace
+</code></pre>
+<p>hellonode-ns라는 namespace가 생성된 것을 확인할 수 있습니다.</p>
+<pre><code class="language-shell"># output
+$ kubectl get namespace
+NAME              STATUS   AGE
+default           Active   46m
+hellonode-ns      Active   5s
+ibm-cert-store    Active   42m
+ibm-operators     Active   42m
+ibm-system        Active   45m
+kube-node-lease   Active   46m
+kube-public       Active   46m
+kube-system       Active   46m
+</code></pre>
+<h2 id>파드 생성하기</h2>
+<p><code>파드</code>란 쿠버네티스에서 가장 작고 기본적인 배포 가능한 객체입니다. 파드에는 하나 이상의 컨테이너가 존재하며 그 컨테이너들은 파드 내의 같은 자원을 공유합니다.</p>
+<pre><code class="language-yaml"># k8s/hellonode-pod.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hellonode-pod
+  labels:
+    app: app-hellonode
+spec:
+  containers:
+  - name: hellonode-pod
+    image: &lt;docker 계정&gt;/hellonode:v0
+    ports:
+    - containerPort: 3001
+</code></pre>
+<p>도커허브에 있는 다른 이미지를 이용하려면 <code>spec.containers.image</code>에 <code>kantmuyu/hellonode:v0</code>처럼 도커허브 리포지토리 이름을 적어 넣으면 됩니다.<br />
+<code>kantmuyu</code>는 제 도커 아이디이고 <code>hellonode:v0</code>는 리포지토리 이름입니다.</p>
+<hr></hr>
+<blockquote>
+<h5 id="apiversion">※apiVersion</h5>
+<ul>
+<li>APIGROUP에 속해있는 경우 <code>apiVersion: &lt;APIGROUP&gt;/&lt;APIVERSION&gt;</code></li>
+<li>APIGROUP에 속해있지 않는 경우 <code>apiVersion: v1</code></li>
+</ul>
+<p><code>kubectl api-resources</code> 명령어를 이용하여 API그룹에 속해있는지 확인이 가능하고</p>
+<p><code>kubectl api-versions</code>명령어를 이용하여 API그룹의 버전을 확인할 수 있습니다.</p>
+<pre><code class="language-shell">$ kubectl api-resources
+NAME                              SHORTNAMES   APIGROUP                       NAMESPACED   KIND
+... 중략
+controllerrevisions                            apps                           true         ControllerRevision        
+daemonsets                        ds           apps                           true         DaemonSet
+deployments                       deploy       apps                           true         Deployment
+replicasets                       rs           apps                           true         ReplicaSet
+...
+</code></pre>
+<p>Pod는 API그룹에 속해 있지 않고, Deployment는 <code>apps</code>라는 API그룹에 속해있는 것을 알 수 있습니다.</p>
+<pre><code class="language-shell">$ kubectl api-versions
+...중략
+apps/v1
+authentication.k8s.io/v1
+...
+</code></pre>
+<p>apps API그룹에서 이용가능한 버전은 <code>apps/v1</code>가 표시되어 나옵니다.</p>
+<p>Pod는 속해 있지 않기 때문에 <code>v1</code></p>
+<p>Deployment는 <code>apps/v1</code>가 사용가능합니다.</p>
+</blockquote>
+<hr></hr>
+<p><code>kubectl apply -f</code>명령어를 이용하여 만든 파일을 이용해 파드를 생성합니다.</p>
+<pre><code class="language-shell"># kubectl apply -f 를 이용하여 flask 네임스페이스를 pod에 배포
+$ kubectl apply -f hellonode-pod.yaml -n hellonode-ns
+# 조금 기다려보면 pod은 클러스터에서 실행(Running)이 되어 있음을 확인할 수 있습니다.
+$ kubectl get pod -n hellonode-ns
+</code></pre>
+<pre><code class="language-shell"># Output
+NAME            READY   STATUS    RESTARTS   AGE
+hellonode-pod   1/1     Running   0          4s
+</code></pre>
+<p>STATUS가 Running상태가 되면 <code>port-forward</code>를 이용하여 로컬에 접근하기 위한 포트포워딩을 해줍니다.</p>
+<pre><code class="language-shell"># 내부 3001포트와 로컬 3001포트를 포트포워딩
+$ kubectl port-forward pods/hellonode-pod -n hellonode-ns 3001:3001
+</code></pre>
+<p>마찬가지로 <a href="http://localhost:3001">http://localhost:3001</a>에 접속을 하면 다음과 같은 화면이 나오는 것을 확인할 수 있습니다.</p>
+<pre><code>Hello, Node!
+</code></pre>
+<pre><code class="language-shell"># pod 리소스를 확인
+$ kubectl describe pod -n hellonode-ns
+# pod 삭제
+$ kubectl delete pod hellonode-pod -n hellonode-ns
+</code></pre>
+<h2 id>디플로이먼트 생성하기</h2>
+<p><code>디플로이먼트</code>란 동일한 여러 파드의 집합을 말하며, 여러 복제본을 실행하고 어떤 파드가 실패하거나 응답이 없을 때 자동으로 교체를 해줍니다.</p>
+<pre><code class="language-yaml"># k8s/hellonode-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hellonode-deployment
+  labels:
+    app: app-hellonode
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: app-hellonode
+  template:
+    metadata:
+      labels:
+        app: app-hellonode
+    spec:
+      containers:
+      - name: hellonode
+        image: &lt;docker 계정&gt;/hellonode:v0
+        ports:
+        - containerPort: 3001
+</code></pre>
+<p><code>spec.replicas</code>는 파드수를 뜻하며, 여기서는 두 개의 파드를 생성합니다.</p>
+<pre><code class="language-shell"># 위 pod와 마찬가지로 kubectl apply -f 를 이용하여 적용시킨다.
+$ kubectl apply -f hellonode-deployment.yaml -n hellonode-ns
+</code></pre>
+<pre><code class="language-shell"># 조금 후 kubectl get deploy를 이용하여 실행되고 있는 deploy를 확인
+$ kubectl get deploy -n hellonode-ns
+</code></pre>
+<pre><code class="language-shell"># output
+NAME                   READY   UP-TO-DATE   AVAILABLE   AGE
+hellonode-deployment   2/2     2            2           21s
+</code></pre>
+<p>deployment controller에 의해 관리되고 있는 파드들도 <code>get pod</code>로 확인이 가능합니다.</p>
+<pre><code class="language-shell">$ kubectl get pod -n hellonode-ns
+</code></pre>
+<p>두 개의 동일한 파드가 생성된 것을 확인할 수 있습니다.</p>
+<pre><code class="language-shell"># Output
+NAME                                    READY   STATUS    RESTARTS   AGE
+hellonode-deployment-78cf6785dc-nwvml   1/1     Running   0          100s
+hellonode-deployment-78cf6785dc-qdt7j   1/1     Running   0          100s
+</code></pre>
+<p>파드와 마찬가지로 로컬에 접근하기 위해 포트 포워딩을 해줍니다.</p>
+<pre><code class="language-shell">$ kubectl port-forward deployment/hellonode-deployment -n hellonode-ns 3001:3001
+</code></pre>
+<p>마찬가지로 <a href="http://localhost:3001">http://localhost:3001</a>에 접속을 하면 다음과 같은 화면이 나오는 것을 확인할 수 있습니다.</p>
+<pre><code>Hello, Node!
+</code></pre>
+<h2 id>서비스 생성하기</h2>
+<p><code>서비스</code>는 각각의 파드 엔드포인트를 단일 리소스로 그룹화를 해줍니다. 기본적으로 모든 파드는 임시 클러스터 내부 IP주소가 할당되는데 그것들을 고정된 IP로 그룹화해줌으로써 파드간의 로드밸런싱 지원이 가능합니다.</p>
+<pre><code class="language-yaml"># k8s/hellonode-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: hellonode-service
+  labels:
+    app: app-hellonode
+spec:
+  type: NodePort 
+  ports:
+  - port: 80
+    targetPort: 3001
+    protocol: TCP
+  selector:
+    app: app-hellonode
+</code></pre>
+<blockquote>
+<h3 id="servicetypes">ServiceTypes</h3>
+<ul>
+<li><code>ClusterIP</code>: 서비스타입의 디폴트값으로 서비스를 클러스터-내부 IP에 할당합니다. <code>클러스터 내부</code>에서만 서비스에 접속할 수 있습니다.</li>
+<li><code>NodePort</code>:  &lt; NodeIP &gt;:&lt; NodePort &gt;에 접속하여 <code>클러스터 외부</code>에서도 서비스에 접속할 수 있습니다.</li>
+<li><code>LoadBalancer</code>: 클라우드 공급자의 로드 밸런서를 사용하여 서비스를 외부에서도 접속이 가능합니다. <code>IBM Cloud Kubernetes Service 무료티어</code>에서는 사용이 <code>불가능</code>합니다.</li>
+<li><code>ExternalName</code>: 서비스를 <code>externalName</code> 필드의 콘텐츠 (예:<code>foo.bar.example.com</code>)에 포워딩해준다.</li>
+</ul>
+</blockquote>
+<pre><code class="language-shell"># pod와 deploy와 마찬가지로 apply -f 를 이용하여 적용시킨다.
+$ kubectl apply -f hellonode-service.yaml -n hellonode-ns
+</code></pre>
+<p>클라우드 로드 밸런서를 프로비저닝하기 위해서 포드나 디플로이에 비해서 조금 시간이 걸립니다.<br />
+경과를 확인하기 위해선 <code>get service</code>명령어로 확인이 가능합니다.</p>
+<pre><code class="language-shell">$ kubectl -n hellonode-ns get service -w
+# service 대신 svc도 됨.
+</code></pre>
+<pre><code class="language-shell"># output
+NAME                TYPE       CLUSTER-IP       EXTERNAL-IP   PORT(S)        AGE
+hellonode-service   NodePort   &lt;클러스터 IP&gt;   &lt;none&gt;        80:31031/TCP   17s
+</code></pre>
+<p>포트에 <code>80:31031</code>부분중 <code>31031</code>이 <code>노드포트</code>입니다. 내부 클러스터 80번 포트를 외부에서도 접속이 가능하도록 31031포트에 포트포워딩을 한 것입니다.</p>
+<pre><code class="language-shell">$ kubectl get node -o wide
+</code></pre>
+<pre><code class="language-shell"># output
+NAME      STATUS   ROLES    AGE    VERSION     INTERNAL-IP   EXTERNAL-IP       OS-IMAGE        KERNEL-VERSION      CONTAINER-RUNTIME
+&lt;내부 IP&gt;   Ready   &lt;none&gt;   101m   v1.17.9+IKS   &lt;내부 IP&gt;     &lt;외부 IP&gt;   Ubuntu 16.04.6 LTS   4.4.0-185-generic   containerd://1.3.4
+</code></pre>
+<p>http://&lt;외부 IP&gt;:&lt;노드포트&gt;에 접속하여 접속이 되는지 확인합니다.</p>
+<pre><code>Hello, Node!
+</code></pre>
+<h2 id="ibmcloud">IBM Cloud 대시보드에서 확인하기</h2>
+<p><a href="https://cloud.ibm.com/">IBM Cloud</a>에 접속하여 <code>대시보드</code>에서 만들었던 <code>클러스터</code>에 접속하여 쿠버네티스 대시보드버튼을 클릭합니다.<br />
+<amp-img src="/content/images/2020/08/kuber2-1.png" alt="kuber2-1" width="600" height="400" layout="responsive"></amp-img></p>
+<p>위 <code>네임스페이스</code>를 <code>hellonode-ns</code>로 바꿔준다음, <code>좌측 메뉴</code>에서 만든 <code>파드</code>, <code>디플로이</code>, <code>서비스</code>가 있는지 확인하면 됩니다.<br />
+<amp-img src="/content/images/2020/08/kuber3-2.png" alt="kuber3-2" width="600" height="400" layout="responsive"></amp-img></p>
+<h2 id>예제 코드</h2>
+<ul>
+<li><a href="https://github.com/trapkka997/node-docker-k8s.git">https://github.com/trapkka997/node-docker-k8s.git</a></li>
+</ul>
+<h2 id>참고</h2>
+<ul>
+<li><a href="https://kubernetes.io/">쿠버네티스 공식 문서</a></li>
+<li><a href="https://www.digitalocean.com/community/meetup_kits/getting-started-with-containers-and-kubernetes-a-digitalocean-meetup-kit">Getting Started with Containers and Kubernetes: A DigitalOcean Workshop Kit</a></li>
+</ul>
+
+
+            </section>
+
+        </article>
+    </main>
+    <footer class="page-footer">
+        <h3>코딩터</h3>
+            <p>Programming Your Home.</p>
+        <p><a href="https://gyutaehan.github.io">Read more posts →</a></p>
+        <a class="powered" href="https://ghost.org" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 156 156"><g fill="none" fill-rule="evenodd"><rect fill="#15212B" width="156" height="156" rx="27"/><g transform="translate(36 36)" fill="#F6F8FA"><path d="M0 71.007A4.004 4.004 0 014 67h26a4 4 0 014 4.007v8.986A4.004 4.004 0 0130 84H4a4 4 0 01-4-4.007v-8.986zM50 71.007A4.004 4.004 0 0154 67h26a4 4 0 014 4.007v8.986A4.004 4.004 0 0180 84H54a4 4 0 01-4-4.007v-8.986z"/><rect y="34" width="84" height="17" rx="4"/><path d="M0 4.007A4.007 4.007 0 014.007 0h41.986A4.003 4.003 0 0150 4.007v8.986A4.007 4.007 0 0145.993 17H4.007A4.003 4.003 0 010 12.993V4.007z"/><rect x="67" width="17" height="17" rx="4"/></g></g></svg> Published with Ghost</a>
+    </footer>
+    
+</body>
+</html>

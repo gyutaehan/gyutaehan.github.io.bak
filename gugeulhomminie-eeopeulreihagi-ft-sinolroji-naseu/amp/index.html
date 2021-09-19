@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html ⚡>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+    <title>구글홈미니에 에어플레이하기 (ft, 시놀로지 나스)</title>
+
+    <link rel="canonical" href="https://gyutaehan.github.io/gugeulhomminie-eeopeulreihagi-ft-sinolroji-naseu/" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    
+    <meta property="og:site_name" content="코딩터" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="구글홈미니에 에어플레이하기 (ft, 시놀로지 나스)" />
+    <meta property="og:description" content="구글홈미니에 블루투스를 연결하여 음악을 재생하거나 할 수는 있지만, 일일히 재생할 때마다 블루투스를 연결하는 것은 어지간히 귀찮은 일입니다. 그래서 시놀로지 나스를 거쳐서 에어플레이를 할 수 있게  AirConnect-Synology를 설치를 하였습니다.  AirConnect Synology AirConnect-Synology는 시놀로지 나스와 크롬캐스트 기기를 연결해주는 시놀로지 패키지를 제공하고 있습니다. 누구나 전문지식 없이도 간단히 설치가 가능합니다.    먼저 본인이 가지고 있는" />
+    <meta property="og:url" content="https://gyutaehan.github.io/gugeulhomminie-eeopeulreihagi-ft-sinolroji-naseu/" />
+    <meta property="article:published_time" content="2021-05-16T17:39:59.000Z" />
+    <meta property="article:modified_time" content="2021-05-16T17:42:33.000Z" />
+    <meta property="article:tag" content="Synology" />
+    <meta property="article:tag" content="nas" />
+    <meta property="article:tag" content="Synology nas" />
+    <meta property="article:tag" content="Airplay" />
+    <meta property="article:tag" content="Google home mini" />
+    <meta property="article:tag" content="에어플레이" />
+    <meta property="article:tag" content="구글홈미니" />
+    
+    <meta property="article:publisher" content="https://www.facebook.com/100017130408671" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="구글홈미니에 에어플레이하기 (ft, 시놀로지 나스)" />
+    <meta name="twitter:description" content="구글홈미니에 블루투스를 연결하여 음악을 재생하거나 할 수는 있지만, 일일히 재생할 때마다 블루투스를 연결하는 것은 어지간히 귀찮은 일입니다. 그래서 시놀로지 나스를 거쳐서 에어플레이를 할 수 있게  AirConnect-Synology를 설치를 하였습니다.  AirConnect Synology AirConnect-Synology는 시놀로지 나스와 크롬캐스트 기기를 연결해주는 시놀로지 패키지를 제공하고 있습니다. 누구나 전문지식 없이도 간단히 설치가 가능합니다.    먼저 본인이 가지고 있는" />
+    <meta name="twitter:url" content="https://gyutaehan.github.io/gugeulhomminie-eeopeulreihagi-ft-sinolroji-naseu/" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Gyutae Han" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Synology, nas, Synology nas, Airplay, Google home mini, 에어플레이, 구글홈미니" />
+    <meta name="twitter:site" content="@trapkka997" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "코딩터",
+        "url": "https://gyutaehan.github.io/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://gyutaehan.github.io/favicon.ico",
+            "width": 48,
+            "height": 48
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Gyutae Han",
+        "url": "https://gyutaehan.github.io/author/gyutae/",
+        "sameAs": [
+            "https://gyutaehan.me"
+        ]
+    },
+    "headline": "구글홈미니에 에어플레이하기 (ft, 시놀로지 나스)",
+    "url": "https://gyutaehan.github.io/gugeulhomminie-eeopeulreihagi-ft-sinolroji-naseu/",
+    "datePublished": "2021-05-16T17:39:59.000Z",
+    "dateModified": "2021-05-16T17:42:33.000Z",
+    "keywords": "Synology, nas, Synology nas, Airplay, Google home mini, 에어플레이, 구글홈미니",
+    "description": "구글홈미니에 블루투스를 연결하여 음악을 재생하거나 할 수는 있지만, 일일히 재생할 때마다 블루투스를 연결하는 것은 어지간히 귀찮은 일입니다.\n그래서 시놀로지 나스를 거쳐서 에어플레이를 할 수 있게 AirConnect-Synology\n[https://github.com/eizedev/AirConnect-Synology]를 설치를 하였습니다.\n\nAirConnect Synology\nAirConnect-Synology [https://github.com/eizedev/AirConnect-Synology]는 시놀로지 나스와 \n크롬캐스트 기기를 연결해주는 시놀로지 패키지를 제공하고 있습니다. 누구나 전문지식 없이도 간단히 설치가 가능합니다.\n\n\n먼저 본인이 가지고 있는 나스의 cpu의 종류를 확인합니다. 저는 DS216j로 armada385라는 cpu를 사용하고 있습니다. ARMv7의\nCPU이기 때문에 AirConnect-arm-static-${VERSION}을 설치하면 됩니다. 본인이 가진 ",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://gyutaehan.github.io/"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 4.15" />
+    <link rel="alternate" type="application/rss+xml" title="코딩터" href="https://gyutaehan.github.io/rss/" />
+
+    <style amp-custom>
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    html {
+        overflow-x: hidden;
+        overflow-y: scroll;
+        font-size: 62.5%;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    }
+
+    body {
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
+        color: #3a4145;
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+        font-size: 1.7rem;
+        line-height: 1.55em;
+        font-weight: 400;
+        font-style: normal;
+        background: #fff;
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    p,
+    ul,
+    ol,
+    li,
+    dl,
+    dd,
+    hr,
+    pre,
+    form,
+    table,
+    video,
+    figure,
+    figcaption,
+    blockquote {
+        margin: 0;
+        padding: 0;
+    }
+
+    ul[class],
+    ol[class] {
+        padding: 0;
+        list-style: none;
+    }
+
+    img {
+        display: block;
+        max-width: 100%;
+    }
+
+    input,
+    button,
+    select,
+    textarea {
+        font: inherit;
+        -webkit-appearance: none;
+    }
+
+    fieldset {
+        margin: 0;
+        padding: 0;
+        border: 0;
+    }
+
+    label {
+        display: block;
+        font-size: 0.9em;
+        font-weight: 700;
+    }
+
+    hr {
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 1px;
+        border: 0;
+        border-top: 1px solid currentcolor;
+        opacity: 0.1;
+    }
+
+    ::selection {
+        text-shadow: none;
+        background: #cbeafb;
+    }
+
+    mark {
+        background-color: #fdffb6;
+    }
+
+    small {
+        font-size: 80%;
+    }
+
+    sub,
+    sup {
+        position: relative;
+        font-size: 75%;
+        line-height: 0;
+        vertical-align: baseline;
+    }
+    sup {
+        top: -0.5em;
+    }
+    sub {
+        bottom: -0.25em;
+    }
+
+    ul li + li {
+        margin-top: 0.6em;
+    }
+
+    a {
+        color: var(--ghost-accent-color, #1292EE);
+        text-decoration-skip-ink: auto;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin: 0;
+        font-weight: 700;
+        color: #121212;
+        line-height: 1.4em;
+    }
+
+    h1 {
+        font-size: 3.4rem;
+        line-height: 1.1em;
+    }
+
+    h2 {
+        font-size: 2.4rem;
+        line-height: 1.2em;
+    }
+
+    h3 {
+        font-size: 1.8rem;
+    }
+
+    h4 {
+        font-size: 1.7rem;
+    }
+
+    h5 {
+        font-size: 1.6rem;
+    }
+
+    h6 {
+        font-size: 1.6rem;
+    }
+
+    amp-img {
+        height: 100%;
+        width: 100%;
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    amp-img img {
+        object-fit: cover;
+    }
+
+    .page-header {
+        padding: 50px 5vmin 30px;
+        text-align: center;
+        font-size: 2rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .page-header a {
+        color: #121212;
+        font-weight: 700;
+        text-decoration: none;
+        font-size: 1.6rem;
+        letter-spacing: -0.1px;
+    }
+
+    .post {
+        max-width: 680px;
+        margin: 0 auto;
+    }
+
+    .post-header {
+        margin: 0 5vmin 5vmin;
+        text-align: center;
+    }
+
+    .post-meta {
+        margin: 1rem 0 0 0;
+        text-transform: uppercase;
+        color: #738a94;
+        font-weight: 500;
+        font-size: 1.3rem;
+    }
+
+    .post-image {
+        margin: 0 0 5vmin;
+    }
+
+    .post-image img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    .post-content {
+        padding: 0 5vmin;
+    }
+
+    .post-content > * + * {
+        margin-top: 1.5em;
+    }
+
+    .post-content [id]:not(:first-child) {
+        margin: 2em 0 0;
+    }
+
+    .post-content > [id] + * {
+        margin-top: 1rem;
+    }
+
+    .post-content [id] + .kg-card,
+    .post-content blockquote + .kg-card {
+        margin-top: 40px;
+    }
+
+    .post-content > ul,
+    .post-content > ol,
+    .post-content > dl {
+        padding-left: 1.9em;
+    }
+
+    .post-content hr {
+        margin-top: 40px;
+    }
+
+    .post .post-content hr + * {
+        margin-top: 40px;
+    }
+
+    .post-content amp-img {
+        background-color: #f8f8f8;
+    }
+
+    .post-content blockquote {
+        position: relative;
+        font-style: italic;
+    }
+
+    .post-content blockquote::before {
+        content: "";
+        position: absolute;
+        left: -1.5em;
+        top: 0;
+        bottom: 0;
+        width: 0.3rem;
+        background: var(--ghost-accent-color, #1292EE);
+    }
+
+    .post-content :not(.kg-card):not([id]) + .kg-card {
+        margin-top: 40px;
+    }
+
+    .post-content .kg-card + :not(.kg-card) {
+        margin-top: 40px;
+    }
+
+    .kg-card figcaption {
+        padding: 1.5rem 1.5rem 0;
+        text-align: center;
+        font-weight: 500;
+        font-size: 1.3rem;
+        line-height: 1.4em;
+        opacity: 0.6;
+    }
+
+    .kg-card figcaption strong {
+        color: rgba(0,0,0,0.8);
+    }
+
+    .post-content :not(pre) code {
+        vertical-align: middle;
+        padding: 0.15em 0.4em 0.15em;
+        border: #e1eaef 1px solid;
+        font-weight: 400;
+        font-size: 0.9em;
+        line-height: 1em;
+        color: #15171a;
+        background: #f0f6f9;
+        border-radius: 0.25em;
+    }
+
+    .post-content > pre {
+        overflow: scroll;
+        padding: 16px 20px;
+        color: #fff;
+        background: #1F2428;
+        border-radius: 5px;
+        box-shadow: 0 2px 6px -2px rgba(0,0,0,.1), 0 0 1px rgba(0,0,0,.4);
+    }
+
+    .kg-embed-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .kg-image-card img {
+        margin: auto;
+    }
+
+    .kg-gallery-card + .kg-gallery-card {
+        margin-top: 0.75em;
+    }
+
+    .kg-gallery-container {
+        position: relative;
+    }
+
+    .kg-gallery-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .kg-gallery-image {
+        width: 100%;
+        height: 100%;
+    }
+
+    .kg-gallery-row:not(:first-of-type) {
+        margin: 0.75em 0 0 0;
+    }
+
+    .kg-gallery-image:not(:first-of-type) {
+        margin: 0 0 0 0.75em;
+    }
+
+    .kg-bookmark-card,
+    .kg-bookmark-publisher {
+        position: relative;
+    }
+
+    .kg-bookmark-container,
+    .kg-bookmark-container:hover {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row-reverse;
+        color: currentColor;
+        background: rgba(255,255,255,0.6);
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+        text-decoration: none;
+        border-radius: 5px;
+        box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.1), 0 0 1px rgba(0, 0, 0, 0.4);
+        overflow: hidden;
+    }
+
+    .kg-bookmark-content {
+        flex-basis: 0;
+        flex-grow: 999;
+        padding: 20px;
+        order: 1;
+    }
+
+    .kg-bookmark-title {
+        font-weight: 600;
+        font-size: 1.5rem;
+        line-height: 1.3em;
+    }
+
+    .kg-bookmark-description {
+        display: -webkit-box;
+        max-height: 45px;
+        margin: 0.5em 0 0 0;
+        font-size: 1.4rem;
+        line-height: 1.55em;
+        overflow: hidden;
+        opacity: 0.8;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
+    .kg-bookmark-metadata {
+        margin-top: 20px;
+    }
+
+    .kg-bookmark-metadata {
+        display: flex;
+        align-items: center;
+        font-weight: 500;
+        font-size: 1.3rem;
+        line-height: 1.3em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .kg-bookmark-description {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+    }
+
+    .kg-bookmark-metadata amp-img {
+        width: 18px;
+        height: 18px;
+        max-width: 18px;
+        max-height: 18px;
+        margin-right: 10px;
+    }
+
+    .kg-bookmark-thumbnail {
+        display: flex;
+        flex-basis: 20rem;
+        flex-grow: 1;
+        justify-content: flex-end;
+    }
+
+    .kg-bookmark-thumbnail amp-img {
+        max-height: 200px;
+    }
+
+    .kg-bookmark-author {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .kg-bookmark-publisher::before {
+        content: "•";
+        margin: 0 .5em;
+    }
+
+    .kg-width-full.kg-card-hascaption {
+        display: grid;
+        grid-template-columns: inherit;
+    }
+
+    .post-content table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    .post-content th {
+        padding: 0.5em 0.8em;
+        text-align: left;
+        font-size: .75em;
+        text-transform: uppercase;
+    }
+
+    .post-content td {
+        padding: 0.4em 0.7em;
+    }
+
+    .post-content tbody tr:nth-child(2n + 1) {
+        background-color: rgba(0,0,0,0.1);
+        padding: 1px;
+    }
+
+    .post-content tbody tr:nth-child(2n + 2) td:last-child {
+        box-shadow:
+            inset 1px 0 rgba(0,0,0,0.1),
+            inset -1px 0 rgba(0,0,0,0.1);
+    }
+
+    .post-content tbody tr:nth-child(2n + 2) td {
+        box-shadow: inset 1px 0 rgba(0,0,0,0.1);
+    }
+
+    .post-content tbody tr:last-child {
+        border-bottom: 1px solid rgba(0,0,0,.1);
+    }
+
+    .page-footer {
+        padding: 60px 5vmin;
+        margin: 60px auto 0;
+        text-align: center;
+        background-color: #f8f8f8;
+    }
+
+    .page-footer h3 {
+        margin: 0.5rem 0 0 0;
+    }
+
+    .page-footer p {
+        max-width: 500px;
+        margin: 1rem auto 1.5rem;
+        font-size: 1.7rem;
+        line-height: 1.5em;
+        color: rgba(0,0,0,0.6)
+    }
+
+    .powered {
+        display: inline-flex;
+        align-items: center;
+        margin: 30px 0 0;
+        padding: 6px 9px 6px 6px;
+        border: rgba(0,0,0,0.1) 1px solid;
+        font-size: 12px;
+        line-height: 12px;
+        letter-spacing: -0.2px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+        font-weight: 500;
+        color: #222;
+        text-decoration: none;
+        background: #fff;
+        border-radius: 6px;
+    }
+
+    .powered svg {
+        height: 16px;
+        width: 16px;
+        margin: 0 6px 0 0;
+    }
+
+    @media (max-width: 600px) {
+        body {
+            font-size: 1.6rem;
+        }
+        h1 {
+            font-size: 3rem;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+        }
+    }
+
+    @media (max-width: 400px) {
+        h1 {
+            font-size: 2.6rem;
+            line-height: 1.15em;
+        }
+        h2 {
+            font-size: 2rem;
+            line-height: 1.2em;
+        }
+        h3 {
+            font-size: 1.7rem;
+        }
+    }
+
+    :root {--ghost-accent-color: #FF1A75;}
+    </style>
+
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+
+    
+
+</head>
+
+<body class="amp-template">
+    <header class="page-header">
+        <a href="https://gyutaehan.github.io">
+                코딩터
+        </a>
+    </header>
+
+    <main class="content" role="main">
+        <article class="post">
+
+            <header class="post-header">
+                <h1 class="post-title">구글홈미니에 에어플레이하기 (ft, 시놀로지 나스)</h1>
+                <section class="post-meta">
+                    Gyutae Han -
+                    <time class="post-date" datetime="2021-05-17">17 May 2021</time>
+                </section>
+            </header>
+            <section class="post-content">
+
+                <p><strong>구글홈미니</strong>에 블루투스를 연결하여 음악을 재생하거나 할 수는 있지만, 일일히 재생할 때마다 블루투스를 연결하는 것은 어지간히 귀찮은 일입니다. 그래서 <strong>시놀로지 나스</strong>를 거쳐서 에어플레이를 할 수 있게  <a href="https://github.com/eizedev/AirConnect-Synology">AirConnect-Synology</a>를 설치를 하였습니다.</p>
+<h1 id="airconnectsynology">AirConnect Synology</h1>
+<p><a href="https://github.com/eizedev/AirConnect-Synology">AirConnect-Synology</a>는 <strong>시놀로지 나스</strong>와 <strong>크롬캐스트 기기</strong>를 연결해주는 시놀로지 패키지를 제공하고 있습니다. 누구나 전문지식 없이도 간단히 설치가 가능합니다.</p>
+<p><amp-img src="/content/images/2021/05/airconnection-git0.png" alt="airconnection-git0" width="600" height="400" layout="responsive"></amp-img><br />
+먼저 본인이 가지고 있는 나스의 cpu의 종류를 확인합니다. 저는 <strong>DS216j</strong>로 <strong>armada385</strong>라는 cpu를 사용하고 있습니다. ARMv7의 CPU이기 때문에 AirConnect-arm-static-${VERSION}을 설치하면 됩니다. 본인이 가진 나스의 CPU를 자세히 알고 싶다면 <a href="https://www.synology.com/en-global/knowledgebase/DSM/tutorial/Compatibility_Peripherals/What_kind_of_CPU_does_my_NAS_have">여기</a>서 확인 할 수 있습니다.</p>
+<p><amp-img src="/content/images/2021/05/airconnect-git1.png" alt="airconnect-git1" width="600" height="400" layout="responsive"></amp-img><br />
+<a href="https://github.com/eizedev/AirConnect-Synology">AirConnect-Synology</a>에 접속하여 우측 하단의 가장 <strong>최신 버전의 릴리스</strong>를 클릭합니다.</p>
+<p><amp-img src="/content/images/2021/05/airconnect-git2.png" alt="airconnect-git2" width="600" height="400" layout="responsive"></amp-img><br />
+본인이 가진 시놀로지 나스에 맞는 시놀로지 패키지를 설치합니다. 저는 AirConnect-arm-static-0.2.50.4-20210314.spk 를 설치하였습니다.</p>
+<p><amp-img src="/content/images/2021/05/airconnect-set0.png" alt="airconnect-set0" width="600" height="400" layout="responsive"></amp-img><br />
+설치가 끝났다면, 본인의 시놀로지 나스에 접속하여 <strong>패키지 센터</strong> - <strong>설정</strong> - <strong>신뢰하는 레벨</strong>을 <strong>Any publisher</strong>로 설정합니다.</p>
+<p><amp-img src="/content/images/2021/05/airconnect-set1.png" alt="airconnect-set1" width="600" height="400" layout="responsive"></amp-img><br />
+<strong>수동설치(Manual Install)</strong> - Browse를 선택하여 설치 받았던 <strong>시놀로지 패키지(.sdk)를 선택</strong>하여 <strong>인스톨</strong>을 진행합니다.</p>
+<p><amp-img src="/content/images/2021/05/airconnect-set2.png" alt="airconnect-set2" width="600" height="400" layout="responsive"></amp-img><br />
+인스톨이 완료되었다면, 인스톨이 되었는지 확인하고 <strong>실행</strong>을 해주면 완료입니다.</p>
+<p><amp-img src="/content/images/2021/05/airconnect-get0.png" alt="airconnect-get0" width="600" height="400" layout="responsive"></amp-img><br />
+에어플레이 기기에서 본인의 구글홈미니 이름이 표시 되어 있는 지 확인합니다. 물론 에어플레이는 잘 작동하였습니다.</p>
+<h1 id>실행했는데도 에어플레이에 나오지 않는 경우</h1>
+<ol>
+<li>시놀로지 나스를 재시작하고 Airconnect가 실행되어 있는 지 확인한다.</li>
+<li>구글홈미니가 같은 네트워크에 연결이 되어있는지 확인한다.</li>
+<li>에어플레이 기기가 같은 네트워크 상에 연결이 되어 있는지 확인한다.</li>
+</ol>
+<p>그 외에 이상한 점이 있으면 댓글 부탁드립니다.</p>
+<h1 id>만약 시놀로지 나스를 가지고 있지 않다면?</h1>
+<p>AirConnect-Synology는 <a href="https://github.com/philippe44/AirConnect">AirConnect</a>를 쉽게 시놀로지 나스에서 설치하도록 패키화한 것으로, 다른 기기에서도 할 수 있습니다. 윈도우, 맥, 리눅스등 거의 모든 플랫폼을 지원하고 있으며, 시놀로지 나스가 아니더라도 피시나 라즈베리파이 같은 곳에 쉽게 설치, 에어플레이를 할 수 있습니다. 설치 방법은 <a href="https://github.com/philippe44/AirConnect">AirConnect</a>에서 참고하시면 됩니다.</p>
+
+
+            </section>
+
+        </article>
+    </main>
+    <footer class="page-footer">
+        <h3>코딩터</h3>
+            <p>Programming Your Home.</p>
+        <p><a href="https://gyutaehan.github.io">Read more posts →</a></p>
+        <a class="powered" href="https://ghost.org" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 156 156"><g fill="none" fill-rule="evenodd"><rect fill="#15212B" width="156" height="156" rx="27"/><g transform="translate(36 36)" fill="#F6F8FA"><path d="M0 71.007A4.004 4.004 0 014 67h26a4 4 0 014 4.007v8.986A4.004 4.004 0 0130 84H4a4 4 0 01-4-4.007v-8.986zM50 71.007A4.004 4.004 0 0154 67h26a4 4 0 014 4.007v8.986A4.004 4.004 0 0180 84H54a4 4 0 01-4-4.007v-8.986z"/><rect y="34" width="84" height="17" rx="4"/><path d="M0 4.007A4.007 4.007 0 014.007 0h41.986A4.003 4.003 0 0150 4.007v8.986A4.007 4.007 0 0145.993 17H4.007A4.003 4.003 0 010 12.993V4.007z"/><rect x="67" width="17" height="17" rx="4"/></g></g></svg> Published with Ghost</a>
+    </footer>
+    
+</body>
+</html>

@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html ⚡>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+    <title>1. 깃허브에 프로젝트를 올려보자.</title>
+
+    <meta name="description" content="깃허브 튜토리얼 - git을 이용하여 github에 프로젝트를 올리는 방법" />
+    <link rel="canonical" href="https://gyutaehan.github.io/1-gitgwa-github/" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    
+    <meta property="og:site_name" content="코딩터" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="1. 깃허브에 프로젝트를 올려보자." />
+    <meta property="og:description" content="깃허브 공부
+1.신규 프로젝트와 Github 연동하기." />
+    <meta property="og:url" content="https://gyutaehan.github.io/1-gitgwa-github/" />
+    <meta property="article:published_time" content="2020-07-30T10:15:47.000Z" />
+    <meta property="article:modified_time" content="2020-07-30T10:18:40.000Z" />
+    <meta property="article:tag" content="Github" />
+    
+    <meta property="article:publisher" content="https://www.facebook.com/100017130408671" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="1. 깃허브에 프로젝트를 올려보자." />
+    <meta name="twitter:description" content="깃허브 공부
+1.신규 프로젝트와 Github 연동하기." />
+    <meta name="twitter:url" content="https://gyutaehan.github.io/1-gitgwa-github/" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Gyutae Han" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Github" />
+    <meta name="twitter:site" content="@trapkka997" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "코딩터",
+        "url": "https://gyutaehan.github.io/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://gyutaehan.github.io/favicon.ico",
+            "width": 48,
+            "height": 48
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Gyutae Han",
+        "url": "https://gyutaehan.github.io/author/gyutae/",
+        "sameAs": [
+            "https://gyutaehan.me"
+        ]
+    },
+    "headline": "1. 깃허브에 프로젝트를 올려보자.",
+    "url": "https://gyutaehan.github.io/1-gitgwa-github/",
+    "datePublished": "2020-07-30T10:15:47.000Z",
+    "dateModified": "2020-07-30T10:18:40.000Z",
+    "keywords": "Github",
+    "description": "깃허브 공부\n1.신규 프로젝트와 Github 연동하기.",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://gyutaehan.github.io/"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 4.15" />
+    <link rel="alternate" type="application/rss+xml" title="코딩터" href="https://gyutaehan.github.io/rss/" />
+
+    <style amp-custom>
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    html {
+        overflow-x: hidden;
+        overflow-y: scroll;
+        font-size: 62.5%;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    }
+
+    body {
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
+        color: #3a4145;
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+        font-size: 1.7rem;
+        line-height: 1.55em;
+        font-weight: 400;
+        font-style: normal;
+        background: #fff;
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    p,
+    ul,
+    ol,
+    li,
+    dl,
+    dd,
+    hr,
+    pre,
+    form,
+    table,
+    video,
+    figure,
+    figcaption,
+    blockquote {
+        margin: 0;
+        padding: 0;
+    }
+
+    ul[class],
+    ol[class] {
+        padding: 0;
+        list-style: none;
+    }
+
+    img {
+        display: block;
+        max-width: 100%;
+    }
+
+    input,
+    button,
+    select,
+    textarea {
+        font: inherit;
+        -webkit-appearance: none;
+    }
+
+    fieldset {
+        margin: 0;
+        padding: 0;
+        border: 0;
+    }
+
+    label {
+        display: block;
+        font-size: 0.9em;
+        font-weight: 700;
+    }
+
+    hr {
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 1px;
+        border: 0;
+        border-top: 1px solid currentcolor;
+        opacity: 0.1;
+    }
+
+    ::selection {
+        text-shadow: none;
+        background: #cbeafb;
+    }
+
+    mark {
+        background-color: #fdffb6;
+    }
+
+    small {
+        font-size: 80%;
+    }
+
+    sub,
+    sup {
+        position: relative;
+        font-size: 75%;
+        line-height: 0;
+        vertical-align: baseline;
+    }
+    sup {
+        top: -0.5em;
+    }
+    sub {
+        bottom: -0.25em;
+    }
+
+    ul li + li {
+        margin-top: 0.6em;
+    }
+
+    a {
+        color: var(--ghost-accent-color, #1292EE);
+        text-decoration-skip-ink: auto;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin: 0;
+        font-weight: 700;
+        color: #121212;
+        line-height: 1.4em;
+    }
+
+    h1 {
+        font-size: 3.4rem;
+        line-height: 1.1em;
+    }
+
+    h2 {
+        font-size: 2.4rem;
+        line-height: 1.2em;
+    }
+
+    h3 {
+        font-size: 1.8rem;
+    }
+
+    h4 {
+        font-size: 1.7rem;
+    }
+
+    h5 {
+        font-size: 1.6rem;
+    }
+
+    h6 {
+        font-size: 1.6rem;
+    }
+
+    amp-img {
+        height: 100%;
+        width: 100%;
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    amp-img img {
+        object-fit: cover;
+    }
+
+    .page-header {
+        padding: 50px 5vmin 30px;
+        text-align: center;
+        font-size: 2rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .page-header a {
+        color: #121212;
+        font-weight: 700;
+        text-decoration: none;
+        font-size: 1.6rem;
+        letter-spacing: -0.1px;
+    }
+
+    .post {
+        max-width: 680px;
+        margin: 0 auto;
+    }
+
+    .post-header {
+        margin: 0 5vmin 5vmin;
+        text-align: center;
+    }
+
+    .post-meta {
+        margin: 1rem 0 0 0;
+        text-transform: uppercase;
+        color: #738a94;
+        font-weight: 500;
+        font-size: 1.3rem;
+    }
+
+    .post-image {
+        margin: 0 0 5vmin;
+    }
+
+    .post-image img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    .post-content {
+        padding: 0 5vmin;
+    }
+
+    .post-content > * + * {
+        margin-top: 1.5em;
+    }
+
+    .post-content [id]:not(:first-child) {
+        margin: 2em 0 0;
+    }
+
+    .post-content > [id] + * {
+        margin-top: 1rem;
+    }
+
+    .post-content [id] + .kg-card,
+    .post-content blockquote + .kg-card {
+        margin-top: 40px;
+    }
+
+    .post-content > ul,
+    .post-content > ol,
+    .post-content > dl {
+        padding-left: 1.9em;
+    }
+
+    .post-content hr {
+        margin-top: 40px;
+    }
+
+    .post .post-content hr + * {
+        margin-top: 40px;
+    }
+
+    .post-content amp-img {
+        background-color: #f8f8f8;
+    }
+
+    .post-content blockquote {
+        position: relative;
+        font-style: italic;
+    }
+
+    .post-content blockquote::before {
+        content: "";
+        position: absolute;
+        left: -1.5em;
+        top: 0;
+        bottom: 0;
+        width: 0.3rem;
+        background: var(--ghost-accent-color, #1292EE);
+    }
+
+    .post-content :not(.kg-card):not([id]) + .kg-card {
+        margin-top: 40px;
+    }
+
+    .post-content .kg-card + :not(.kg-card) {
+        margin-top: 40px;
+    }
+
+    .kg-card figcaption {
+        padding: 1.5rem 1.5rem 0;
+        text-align: center;
+        font-weight: 500;
+        font-size: 1.3rem;
+        line-height: 1.4em;
+        opacity: 0.6;
+    }
+
+    .kg-card figcaption strong {
+        color: rgba(0,0,0,0.8);
+    }
+
+    .post-content :not(pre) code {
+        vertical-align: middle;
+        padding: 0.15em 0.4em 0.15em;
+        border: #e1eaef 1px solid;
+        font-weight: 400;
+        font-size: 0.9em;
+        line-height: 1em;
+        color: #15171a;
+        background: #f0f6f9;
+        border-radius: 0.25em;
+    }
+
+    .post-content > pre {
+        overflow: scroll;
+        padding: 16px 20px;
+        color: #fff;
+        background: #1F2428;
+        border-radius: 5px;
+        box-shadow: 0 2px 6px -2px rgba(0,0,0,.1), 0 0 1px rgba(0,0,0,.4);
+    }
+
+    .kg-embed-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .kg-image-card img {
+        margin: auto;
+    }
+
+    .kg-gallery-card + .kg-gallery-card {
+        margin-top: 0.75em;
+    }
+
+    .kg-gallery-container {
+        position: relative;
+    }
+
+    .kg-gallery-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .kg-gallery-image {
+        width: 100%;
+        height: 100%;
+    }
+
+    .kg-gallery-row:not(:first-of-type) {
+        margin: 0.75em 0 0 0;
+    }
+
+    .kg-gallery-image:not(:first-of-type) {
+        margin: 0 0 0 0.75em;
+    }
+
+    .kg-bookmark-card,
+    .kg-bookmark-publisher {
+        position: relative;
+    }
+
+    .kg-bookmark-container,
+    .kg-bookmark-container:hover {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row-reverse;
+        color: currentColor;
+        background: rgba(255,255,255,0.6);
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+        text-decoration: none;
+        border-radius: 5px;
+        box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.1), 0 0 1px rgba(0, 0, 0, 0.4);
+        overflow: hidden;
+    }
+
+    .kg-bookmark-content {
+        flex-basis: 0;
+        flex-grow: 999;
+        padding: 20px;
+        order: 1;
+    }
+
+    .kg-bookmark-title {
+        font-weight: 600;
+        font-size: 1.5rem;
+        line-height: 1.3em;
+    }
+
+    .kg-bookmark-description {
+        display: -webkit-box;
+        max-height: 45px;
+        margin: 0.5em 0 0 0;
+        font-size: 1.4rem;
+        line-height: 1.55em;
+        overflow: hidden;
+        opacity: 0.8;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
+    .kg-bookmark-metadata {
+        margin-top: 20px;
+    }
+
+    .kg-bookmark-metadata {
+        display: flex;
+        align-items: center;
+        font-weight: 500;
+        font-size: 1.3rem;
+        line-height: 1.3em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .kg-bookmark-description {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+    }
+
+    .kg-bookmark-metadata amp-img {
+        width: 18px;
+        height: 18px;
+        max-width: 18px;
+        max-height: 18px;
+        margin-right: 10px;
+    }
+
+    .kg-bookmark-thumbnail {
+        display: flex;
+        flex-basis: 20rem;
+        flex-grow: 1;
+        justify-content: flex-end;
+    }
+
+    .kg-bookmark-thumbnail amp-img {
+        max-height: 200px;
+    }
+
+    .kg-bookmark-author {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .kg-bookmark-publisher::before {
+        content: "•";
+        margin: 0 .5em;
+    }
+
+    .kg-width-full.kg-card-hascaption {
+        display: grid;
+        grid-template-columns: inherit;
+    }
+
+    .post-content table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    .post-content th {
+        padding: 0.5em 0.8em;
+        text-align: left;
+        font-size: .75em;
+        text-transform: uppercase;
+    }
+
+    .post-content td {
+        padding: 0.4em 0.7em;
+    }
+
+    .post-content tbody tr:nth-child(2n + 1) {
+        background-color: rgba(0,0,0,0.1);
+        padding: 1px;
+    }
+
+    .post-content tbody tr:nth-child(2n + 2) td:last-child {
+        box-shadow:
+            inset 1px 0 rgba(0,0,0,0.1),
+            inset -1px 0 rgba(0,0,0,0.1);
+    }
+
+    .post-content tbody tr:nth-child(2n + 2) td {
+        box-shadow: inset 1px 0 rgba(0,0,0,0.1);
+    }
+
+    .post-content tbody tr:last-child {
+        border-bottom: 1px solid rgba(0,0,0,.1);
+    }
+
+    .page-footer {
+        padding: 60px 5vmin;
+        margin: 60px auto 0;
+        text-align: center;
+        background-color: #f8f8f8;
+    }
+
+    .page-footer h3 {
+        margin: 0.5rem 0 0 0;
+    }
+
+    .page-footer p {
+        max-width: 500px;
+        margin: 1rem auto 1.5rem;
+        font-size: 1.7rem;
+        line-height: 1.5em;
+        color: rgba(0,0,0,0.6)
+    }
+
+    .powered {
+        display: inline-flex;
+        align-items: center;
+        margin: 30px 0 0;
+        padding: 6px 9px 6px 6px;
+        border: rgba(0,0,0,0.1) 1px solid;
+        font-size: 12px;
+        line-height: 12px;
+        letter-spacing: -0.2px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+        font-weight: 500;
+        color: #222;
+        text-decoration: none;
+        background: #fff;
+        border-radius: 6px;
+    }
+
+    .powered svg {
+        height: 16px;
+        width: 16px;
+        margin: 0 6px 0 0;
+    }
+
+    @media (max-width: 600px) {
+        body {
+            font-size: 1.6rem;
+        }
+        h1 {
+            font-size: 3rem;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+        }
+    }
+
+    @media (max-width: 400px) {
+        h1 {
+            font-size: 2.6rem;
+            line-height: 1.15em;
+        }
+        h2 {
+            font-size: 2rem;
+            line-height: 1.2em;
+        }
+        h3 {
+            font-size: 1.7rem;
+        }
+    }
+
+    :root {--ghost-accent-color: #FF1A75;}
+    </style>
+
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+
+    
+
+</head>
+
+<body class="amp-template">
+    <header class="page-header">
+        <a href="https://gyutaehan.github.io">
+                코딩터
+        </a>
+    </header>
+
+    <main class="content" role="main">
+        <article class="post">
+
+            <header class="post-header">
+                <h1 class="post-title">1. 깃허브에 프로젝트를 올려보자.</h1>
+                <section class="post-meta">
+                    Gyutae Han -
+                    <time class="post-date" datetime="2020-07-30">30 Jul 2020</time>
+                </section>
+            </header>
+            <section class="post-content">
+
+                <h1 id="1git">1. Git</h1>
+<p>Git은 형상관리도구중 하나로, SVN과 함께 전세계적으로 인기가 많은 소프트웨어입니다.<br />
+저희 회사에선 SVN을 사용하지만, SVN보다는 Git을 사용하는 추세입니다.</p>
+<p>기본적으로 Git의 흐름에 대해선 <a href="https://blog.osteele.com/2008/05/my-git-workflow/">Oliver Steele</a> 님께서 작성한 그림을 확인해보면,</p>
+<p><amp-img src="https://images.osteele.com/2008/git-transport.png" alt="gitflow" width="481" height="455" layout="responsive"></amp-img></p>
+<p><strong>workspace</strong>, <strong>index</strong>, <strong>local</strong> <strong>repository</strong>, <strong>remote</strong> <strong>repository</strong>가 나누어져 있습니다.</p>
+<p><strong>workspace</strong>(작업공간)는 직접 사용자가 작업하는 공간입니다.<br />
+<strong>local repository</strong>(로컬 저장소)Git서버에 실제로 Commit되는 데이터가 들어갑니다.<br />
+<strong>index</strong>(스테이징 영역)는 스테이징된 파일들이 들어가게됩니다. 스테이징 된 파일들을 Commit을 하면 원격 저장소에 올라가게 됩니다.<br />
+<strong>remote repository</strong>(원격 저장소)는 인터넷이나 네트워크 어디엔가 있는 원격 저장소입니다. 그렇다고 해서, 로컬에도 원격저장소를 구축할 수 없는 것은 아닙니다. 여기선 Github를 원격저장소로 이용할 생각입니다.</p>
+<h3 id="git">Git 설치</h3>
+<p><amp-img src="/content/images/2020/07/git0.png" alt="git0" width="600" height="400" layout="responsive"></amp-img><br />
+<a href="https://git-scm.com/downloads">https://git-scm.com/downloads</a> 에서 설치할 수 있습니다.<br />
+자신의 운영체제에 맞는 버전을 다운로드 하여 설치하시면 됩니다.</p>
+<h3 id="git">Git 로컬 서버에 커밋하기</h3>
+<p><amp-img src="/content/images/2020/07/git1.png" alt="git1" width="600" height="400" layout="responsive"></amp-img><br />
+git-test 폴더 안에 test.txt라는 파일을 작성하였습니다.<br />
+전 VSCode의 터미널을 이용하였지만,<br />
+윈도우라면 커맨드프롬프트나 PowerShell, 리눅스나 맥이라면 터미널을 이용하시면 됩니다.</p>
+<p>아래의 명령어를 이용하여 Git로컬서버에 커밋을 합니다.</p>
+<pre><code># /.git/ 폴더를 생성
+git-test $ git init
+
+# add를 이용하여, 스테이징 영역에 test.txt를 스테이징한다.
+git-test $ git add test.txt
+
+# 스테이징된 내용을 로컬 저장소에 커밋한다.
+git-test $ git commit -m "첫 번째 커밋"
+</code></pre>
+<p><amp-img src="/content/images/2020/07/gi11.png" alt="gi11" width="600" height="400" layout="responsive"></amp-img><br />
+git log 명령어를 이용하여, 커밋이 되었는지 확인도 가능합니다.<br />
+<amp-img src="/content/images/2020/07/git12.png" alt="git12" width="600" height="400" layout="responsive"></amp-img></p>
+<h3 id>깃 서버에 있는 내용을 깃허브에 올리기</h3>
+<p><amp-img src="/content/images/2020/07/Screen-Shot-2020-07-30-at-15.32.16.png" alt="gittwit" width="600" height="400" layout="responsive"></amp-img></p>
+<p><a href="https://github.com/">깃허브</a>에 접속하여 계정 생성 및 로그인을 해줍니다.</p>
+<p><amp-img src="/content/images/2020/07/gi2.png" alt="new repository" width="600" height="400" layout="responsive"></amp-img><br />
+우 상단에 위치한 +를 눌러 New repository를 클릭해줍니다.</p>
+<p><amp-img src="/content/images/2020/07/git3.png" alt="git3" width="600" height="400" layout="responsive"></amp-img><br />
+리포지토리 이름과 설명을 입력해주고 리포지토리를 생성합니다.</p>
+<p><amp-img src="/content/images/2020/07/git4.png" alt="git4" width="600" height="400" layout="responsive"></amp-img><br />
+생성을 하게되면 다음과 같은 창이 나오는데 복사를 합니다.</p>
+<pre><code># 원격 저장소를 지정해준다.
+# 예를들면, git remote add origin https://github.com/trapkka997/git-test.git
+git-test $ git remote add origin {위에서 복사한 리포지토리 주소}
+
+# 로컬 저장소에 있는 내용을 원격 저장소에 푸시한다.
+git-test $ git push -u origin master
+
+# origin : 저장소 이름 
+# master : 브랜치 이름 
+</code></pre>
+<p><em>여담이지만 브랜치 이름의 "master"가 master/slave 같은 노예제도 용어라서 그걸 없애고 "main"으로 바꾸겠다는 <a href="https://www.bbc.com/news/technology-53050955">기사</a>가 있었는데, 그게 언제가 될지는 모르겠습니다.</em></p>
+<p><amp-img src="/content/images/2020/07/git5.png" alt="git5" width="600" height="400" layout="responsive"></amp-img><br />
+깃허브 저장소를 확인해보면, 위와 같이 test.txt가 푸시 된 것을 확인할 수 있습니다.</p>
+
+
+            </section>
+
+        </article>
+    </main>
+    <footer class="page-footer">
+        <h3>코딩터</h3>
+            <p>Programming Your Home.</p>
+        <p><a href="https://gyutaehan.github.io">Read more posts →</a></p>
+        <a class="powered" href="https://ghost.org" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 156 156"><g fill="none" fill-rule="evenodd"><rect fill="#15212B" width="156" height="156" rx="27"/><g transform="translate(36 36)" fill="#F6F8FA"><path d="M0 71.007A4.004 4.004 0 014 67h26a4 4 0 014 4.007v8.986A4.004 4.004 0 0130 84H4a4 4 0 01-4-4.007v-8.986zM50 71.007A4.004 4.004 0 0154 67h26a4 4 0 014 4.007v8.986A4.004 4.004 0 0180 84H54a4 4 0 01-4-4.007v-8.986z"/><rect y="34" width="84" height="17" rx="4"/><path d="M0 4.007A4.007 4.007 0 014.007 0h41.986A4.003 4.003 0 0150 4.007v8.986A4.007 4.007 0 0145.993 17H4.007A4.003 4.003 0 010 12.993V4.007z"/><rect x="67" width="17" height="17" rx="4"/></g></g></svg> Published with Ghost</a>
+    </footer>
+    
+</body>
+</html>

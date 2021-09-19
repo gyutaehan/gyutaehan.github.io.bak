@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>깃허브 초보가 써보는 GitHub CLI 1.0</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css?v=52f3894f9a" />
+
+    <link rel="canonical" href="https://gyutaehan.github.io/gisheobeu-coboga-sseoboneun-github-cli-1-0/" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <link rel="amphtml" href="https://gyutaehan.github.io/gisheobeu-coboga-sseoboneun-github-cli-1-0/amp/" />
+    
+    <meta property="og:site_name" content="코딩터" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="깃허브 초보가 써보는 GitHub CLI 1.0" />
+    <meta property="og:description" content="깃허브 초보가 써보는 GitHub CLI 1.0 2020년 9월 16일 릴리즈된 GitHub 커맨드라인, GitHub CLI가 릴리즈 되었습니다. 기존 GitHub에서 하던 작업들을 커맨드라인에서 할 수 있다고 하는데, GitHub 생초짜인 제가 한 번 써보았습니다.  INSTALL Windows, Linux, Mac에서 지원을 하며 설치 방법은 CLI에서 확인할 수 있습니다.  MacOS기준으로 Homebrew나 MacPorts를 이용하여 설치가 가능합니다." />
+    <meta property="og:url" content="https://gyutaehan.github.io/gisheobeu-coboga-sseoboneun-github-cli-1-0/" />
+    <meta property="article:published_time" content="2020-09-22T14:22:10.000Z" />
+    <meta property="article:modified_time" content="2020-12-18T02:49:00.000Z" />
+    <meta property="article:tag" content="Git" />
+    <meta property="article:tag" content="깃허브" />
+    <meta property="article:tag" content="깃" />
+    <meta property="article:tag" content="GitHub CLI" />
+    <meta property="article:tag" content="Github" />
+    <meta property="article:tag" content="study" />
+    
+    <meta property="article:publisher" content="https://www.facebook.com/100017130408671" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="깃허브 초보가 써보는 GitHub CLI 1.0" />
+    <meta name="twitter:description" content="깃허브 초보가 써보는 GitHub CLI 1.0 2020년 9월 16일 릴리즈된 GitHub 커맨드라인, GitHub CLI가 릴리즈 되었습니다. 기존 GitHub에서 하던 작업들을 커맨드라인에서 할 수 있다고 하는데, GitHub 생초짜인 제가 한 번 써보았습니다.  INSTALL Windows, Linux, Mac에서 지원을 하며 설치 방법은 CLI에서 확인할 수 있습니다.  MacOS기준으로 Homebrew나 MacPorts를 이용하여 설치가 가능합니다." />
+    <meta name="twitter:url" content="https://gyutaehan.github.io/gisheobeu-coboga-sseoboneun-github-cli-1-0/" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Gyutae Han" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Git, 깃허브, 깃, GitHub CLI, Github, study" />
+    <meta name="twitter:site" content="@trapkka997" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "코딩터",
+        "url": "https://gyutaehan.github.io/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://gyutaehan.github.io/favicon.ico",
+            "width": 48,
+            "height": 48
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Gyutae Han",
+        "url": "https://gyutaehan.github.io/author/gyutae/",
+        "sameAs": [
+            "https://gyutaehan.me"
+        ]
+    },
+    "headline": "깃허브 초보가 써보는 GitHub CLI 1.0",
+    "url": "https://gyutaehan.github.io/gisheobeu-coboga-sseoboneun-github-cli-1-0/",
+    "datePublished": "2020-09-22T14:22:10.000Z",
+    "dateModified": "2020-12-18T02:49:00.000Z",
+    "keywords": "Git, 깃허브, 깃, GitHub CLI, Github, study",
+    "description": "깃허브 초보가 써보는 GitHub CLI 1.0\n2020년 9월 16일 릴리즈된 GitHub 커맨드라인, GitHub CLI\n[https://github.blog/2020-09-17-github-cli-1-0-is-now-available/]가 릴리즈 되었습니다. 기존\nGitHub에서 하던 작업들을 커맨드라인에서 할 수 있다고 하는데, GitHub 생초짜인 제가 한 번 써보았습니다.\n\nINSTALL\nWindows, Linux, Mac에서 지원을 하며 설치 방법은 CLI\n[https://github.com/cli/cli#installation-and-upgrading]에서 확인할 수 있습니다.\nMacOS기준으로 Homebrew나 MacPorts를 이용하여 설치가 가능합니다.\n\n# Homebrew 인 경우\n$ brew install gh\n$ brew upgrade gh\n\n# MacPorts 인 경우\n$ sudo port install gh\n$ sudo port selfupdate &amp;&amp; ",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://gyutaehan.github.io/"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 4.15" />
+    <link rel="alternate" type="application/rss+xml" title="코딩터" href="https://gyutaehan.github.io/rss/" />
+    <script defer src="https://unpkg.com/@tryghost/portal@~1.9.0/umd/portal.min.js" data-ghost="https://gyutaehan.github.io/" crossorigin="anonymous"></script><style id="gh-members-styles">.gh-post-upgrade-cta-content,
+.gh-post-upgrade-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+    width: 100%;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.gh-post-upgrade-cta-content {
+    border-radius: 8px;
+    padding: 40px 4vw;
+}
+
+.gh-post-upgrade-cta h2 {
+    color: #ffffff;
+    font-size: 28px;
+    letter-spacing: -0.2px;
+    margin: 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta p {
+    margin: 20px 0 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta small {
+    font-size: 16px;
+    letter-spacing: -0.2px;
+}
+
+.gh-post-upgrade-cta a {
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: 500;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a:hover {
+    color: #ffffff;
+    opacity: 0.8;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a.gh-btn {
+    display: block;
+    background: #ffffff;
+    text-decoration: none;
+    margin: 28px 0 0;
+    padding: 8px 18px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.gh-post-upgrade-cta a.gh-btn:hover {
+    opacity: 0.92;
+}</style>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KMJDLT47M7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KMJDLT47M7');
+</script>
+<script data-ad-client="ca-pub-5386847665218807" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>var disqus = 'gyutaehan-me';</script><style>:root {--ghost-accent-color: #FF1A75;}</style>
+
+</head>
+<body class="post-template tag-git tag-gisheobeu tag-gis tag-github-cli tag-github tag-study">
+<div class="viewport">
+
+    <header id="gh-head" class="gh-head ">
+        <nav class="gh-head-inner inner gh-container">
+
+            <div class="gh-head-brand">
+                <a class="gh-head-logo" href="https://gyutaehan.github.io">
+                        코딩터
+                </a>
+                <a class="gh-burger" role="button">
+                    <div class="gh-burger-box">
+                        <div class="gh-burger-inner"></div>
+                    </div>
+                </a>
+            </div>
+            <div class="gh-head-menu">
+                <ul class="nav">
+    <li class="nav-home"><a href="https://gyutaehan.github.io/">Home</a></li>
+    <li class="nav-study"><a href="https://gyutaehan.github.io/tag/study/">Study</a></li>
+    <li class="nav-kubernetes"><a href="https://gyutaehan.github.io/tag/Kubernetes/">Kubernetes</a></li>
+    <li class="nav-ibm-c-louders"><a href="https://gyutaehan.github.io/tag/ibmclouders/">IBM C:LOUDERs</a></li>
+    <li class="nav-author"><a href="https://gyutaehan.github.io/author/hangyutae/">Author</a></li>
+</ul>
+
+            </div>
+            <div class="gh-head-actions">
+                <div class="gh-social">
+                        <a class="gh-social-facebook" href="https://www.facebook.com/100017130408671" title="Facebook" target="_blank" rel="noopener"><svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M16 0c8.837 0 16 7.163 16 16s-7.163 16-16 16S0 24.837 0 16 7.163 0 16 0zm5.204 4.911h-3.546c-2.103 0-4.443.885-4.443 3.934.01 1.062 0 2.08 0 3.225h-2.433v3.872h2.509v11.147h4.61v-11.22h3.042l.275-3.81h-3.397s.007-1.695 0-2.187c0-1.205 1.253-1.136 1.329-1.136h2.054V4.911z" /></svg></a>
+                        <a class="gh-social-twitter" href="https://twitter.com/trapkka997" title="Twitter" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+</a>
+                </div>
+
+                    <a class="gh-head-button" href="#/portal/signup">Subscribe</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        
+
+
+
+<article class="article post tag-git tag-gisheobeu tag-gis tag-github-cli tag-github tag-study no-image">
+
+    <header class="article-header gh-canvas">
+
+        <section class="article-tag">
+            <a href="https://gyutaehan.github.io/tag/git/">Git</a>
+        </section>
+
+        <h1 class="article-title">깃허브 초보가 써보는 GitHub CLI 1.0</h1>
+
+
+        <div class="article-byline">
+            <section class="article-byline-content">
+                <ul class="author-list">
+                    <li class="author-list-item">
+                        <a href="/author/gyutae/" class="author-avatar author-profile-image"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M3.513 18.998C4.749 15.504 8.082 13 12 13s7.251 2.504 8.487 5.998C18.47 21.442 15.417 23 12 23s-6.47-1.558-8.487-4.002zM12 12c2.21 0 4-2.79 4-5s-1.79-4-4-4-4 1.79-4 4 1.79 5 4 5z" fill="#FFF"/></g></svg>
+</a>
+                    </li>
+                </ul>
+                <div class="article-byline-meta">
+                    <h4 class="author-name"><a href="/author/gyutae/">Gyutae Han</a></h4>
+                    <div class="byline-meta-content">
+                        <time class="byline-meta-date" datetime="2020-09-22">Sep 22, 2020</time>
+                        <span class="byline-reading-time"><span class="bull">&bull;</span> 12 min read</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    </header>
+
+    <section class="gh-content gh-canvas">
+        <!--kg-card-begin: markdown--><h1 id="githubcli10">깃허브 초보가 써보는 GitHub CLI 1.0</h1>
+<p>2020년 9월 16일 릴리즈된 GitHub 커맨드라인, <a href="https://github.blog/2020-09-17-github-cli-1-0-is-now-available/"><strong>GitHub CLI</strong></a>가 릴리즈 되었습니다. 기존 GitHub에서 하던 작업들을 커맨드라인에서 할 수 있다고 하는데, GitHub 생초짜인 제가 한 번 써보았습니다.</p>
+<h2 id="install">INSTALL</h2>
+<p><strong>Windows</strong>, <strong>Linux</strong>, <strong>Mac</strong>에서 지원을 하며 설치 방법은 <a href="https://github.com/cli/cli#installation-and-upgrading">CLI</a>에서 확인할 수 있습니다.<br>
+<strong>MacOS</strong>기준으로 <strong>Homebrew</strong>나 <strong>MacPorts</strong>를 이용하여 설치가 가능합니다.</p>
+<pre><code class="language-shell"># Homebrew 인 경우
+$ brew install gh
+$ brew upgrade gh
+
+# MacPorts 인 경우
+$ sudo port install gh
+$ sudo port selfupdate &amp;&amp; sudo port upgrade gh
+</code></pre>
+<p>명령어는 <code>gh</code>이며 현재 버전은 <strong>1.0.0</strong>입니다.</p>
+<pre><code class="language-shell">$ gh version
+
+# output
+gh version 1.0.0 (2020-09-16)
+https://github.com/cli/cli/releases/tag/v1.0.0
+</code></pre>
+<h1 id="">그래서 이걸로 무엇이 가능한 걸까??</h1>
+<p><strong>GitHub</strong>에서 하는거야.. 뭐 푸시나 풀 그게 뭐 다 아니야? 그건 <strong>Git</strong>에서 다 가능한거잖아. 그래서 이걸로 대체 뭐가 가능한건데? 라는 의문이 있었기 때문에 그것을 해결하기 위해 <a href="https://cli.github.com/manual/gh_pr_checks">공식 문서</a>에서 <strong>명령어</strong>들을 살펴보았습니다.</p>
+<ul>
+<li>
+<p><strong>ADDITIONAL COMMANDS</strong></p>
+<ol>
+<li><a href="#1.-auth">Auth</a></li>
+<li><a href="#2.-alias">Alias</a></li>
+<li><a href="#3.-api">API</a></li>
+<li><a href="#4.-completion">Completion</a></li>
+<li><a href="#5.-config">Config</a></li>
+<li><a href="#6.-help">Help</a></li>
+</ol>
+</li>
+<li>
+<p><strong>CORE COMMANDS</strong></p>
+<ol>
+<li><a href="#1.-repo">Repo</a></li>
+<li><a href="#2.-gist">Gist</a></li>
+<li><a href="#3.-issue">Issue</a></li>
+<li><a href="#4.-pr">PR</a></li>
+<li><a href="#5.-release">Release</a></li>
+</ol>
+</li>
+</ul>
+<hr>
+<h2 id="additionalcommands">ADDITIONAL COMMANDS</h2>
+<h2 id="1auth">1. Auth</h2>
+<p>깃허브의 <strong>인증 관련</strong>을 관리하는 명령어입니다.</p>
+<ul>
+<li><strong>Login</strong><br>
+로그인합니다.</li>
+<li><strong>Logout</strong><br>
+로그아웃합니다.</li>
+<li><strong>Refresh</strong><br>
+인증 정보를 새로고침합니다.</li>
+<li><strong>Status</strong><br>
+인증 상태를 확인합니다.</li>
+</ul>
+<hr>
+<h3 id="login">Login</h3>
+<p><a href="https://github.com">GitHub.com</a>뿐만 아니라 <a href="https://github.com/enterprise">GitHub Enterprise Server</a>에도 연결이 가능하며, <a href="https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token">토큰을 발급</a>받거나 브라우저에서 로그인이 가능함.</p>
+<pre><code class="language-shell"># 로그인 명령어
+$ gh auth login 
+
+# output
+...
+✓ Configured git protocol
+✓ Logged in as &lt; 계정 이름 &gt;
+</code></pre>
+<h3 id="logout">Logout</h3>
+<pre><code class="language-shell"># 로그아웃 명령어
+$ gh auth logout
+
+# output
+? Are you sure you want to log out of github.com account &lt; 계정 이름 &gt;? Yes
+✓ Logged out of github.com account &lt; 계정 이름&gt;
+</code></pre>
+<h3 id="refresh">Refresh</h3>
+<pre><code class="language-shell"># 래플래시 명령어
+$ gh auth refresh
+
+# output
+✓ Authentication complete. Press Enter to continue...
+</code></pre>
+<h3 id="status">Status</h3>
+<pre><code class="language-sh"># 상태 명령어
+$ gh auth status
+
+# output
+github.com
+✓ Logged in to github.com as &lt; 계정 이름 &gt; (~/.config/gh/hosts.yml)
+✓ Git operations for github.com configured to use https protocol.
+</code></pre>
+<h2 id="2alias">2. Alias</h2>
+<p><code>gh명령어</code>의 알리아스 관련 명령어입니다.</p>
+<ul>
+<li><strong>Delete</strong><br>
+알리아스를 삭제합니다.</li>
+<li><strong>List</strong><br>
+알리아스들의 리스트를 표시합니다.</li>
+<li><strong>Set</strong><br>
+알리아스를 생성합니다.</li>
+</ul>
+<hr>
+<h3 id="login">Login</h3>
+<pre><code class="language-shell"># gh alias delete &lt;알리아스&gt; [flags]
+$ gh alias delete pv
+
+# output
+✓ Deleted alias pv; was pr view
+</code></pre>
+<h3 id="list">List</h3>
+<pre><code class="language-shell">$ gh alias list
+
+# output
+co:  pr checkout
+pv:  pr view
+</code></pre>
+<h3 id="set">Set</h3>
+<pre><code class="language-shell"># gh alias set &lt;알리아스&gt; &lt;expansion&gt; [flags]
+$ gh alias set pv 'pr view'
+
+# output
+- Adding alias for pv: pr view
+✓ Added alias.
+
+=&gt;
+# gh pr view를 gh pv로 알리아스 설정이 가능해짐.
+</code></pre>
+<h2 id="3api">3. API</h2>
+<p><strong>GitHub API</strong>에 인증된 HTTP 요청을 하고 응답을 표시합니다.</p>
+<hr>
+<pre><code class="language-shell">$ gh api repos/:owner/:repo/releases 
+
+# output
+# JSON 형식으로 응답을 받음
+</code></pre>
+<h2 id="4completion">4. Completion</h2>
+<p><strong>GitHub CLI</strong> 명령어에 대한 지정된 자동완성 쉘 스크립트를 생성합니다.</p>
+<hr>
+<pre><code class="language-shell">$ gh completion -s zsh   
+
+# output
+# zsh 쉘 스크립트가 생성이 됨
+</code></pre>
+<h2 id="5config">5. Config</h2>
+<p><strong>GitHub CLI</strong> 세팅들을 관리합니다.</p>
+<ul>
+<li><strong>Get</strong><br>
+알리아스를 삭제합니다.</li>
+<li><strong>Set</strong><br>
+알리아스들의 리스트를 표시합니다.</li>
+</ul>
+<hr>
+<h3 id="get">Get</h3>
+<pre><code class="language-shell"># git 프로토콜에 설정에 대해 표시합니다.
+$ gh config get git_protocol
+
+# output
+https
+</code></pre>
+<h3 id="set">Set</h3>
+<pre><code class="language-shell"># git 에디터에 대해여 vim으로 설정합니다.
+$ gh config set editor vim   
+</code></pre>
+<h2 id="6help">6. Help</h2>
+<p><strong>GitHub CLI</strong> 명령어의 도움말을 표시합니다.</p>
+<hr>
+<pre><code class="language-shell"># --help 옵션을 주는 것도 가능함.
+$ gh help alias
+
+# output
+Aliases can be used to make shortcuts for gh commands or to compose multiple commands.
+
+Run &quot;gh help alias set&quot; to learn more.
+
+
+USAGE
+  gh alias [flags]
+
+CORE COMMANDS
+  delete:     Delete an alias
+  list:       List your aliases
+  set:        Create a shortcut for a gh command
+
+INHERITED FLAGS
+  --help   Show help for command
+
+LEARN MORE
+  Use 'gh &lt;command&gt; &lt;subcommand&gt; --help' for more information about a command.
+  Read the manual at https://cli.github.com/manual
+</code></pre>
+<h2 id="corecommands">CORE COMMANDS</h2>
+<h2 id="1repo">1. Repo</h2>
+<p><strong>깃허브</strong>의 <strong>리포지토리</strong>를 <strong>관리</strong>하는 명령어입니다.</p>
+<p>이 명령어를 보자마자 git과의 차이점을 느꼈는데 git으로는 당연하겠지만 깃허브의 리포지토리까지는 생성이 불가능하니까요.</p>
+<ul>
+<li><strong>Create</strong><br>
+새로운 리포지토리를 생성합니다.</li>
+<li><strong>Clone</strong><br>
+리포지토리를 클론합니다.</li>
+<li><strong>Fork</strong><br>
+포크를 생성합니다.</li>
+<li><strong>View</strong><br>
+리포지토리를 확인합니다.</li>
+</ul>
+<hr>
+<h3 id="create">Create</h3>
+<pre><code class="language-shell"># gh-test라는 이름의 리포지토리를 생성한다.
+$ gh repo create gh-test 
+
+# output
+? This will create 'gh-test' in your current directory. Continue?  Yes
+✓ Created repository &lt; 계정 이름 &gt;/gh-test on GitHub
+✓ Added remote https://github.com/&lt; 계정 이름 &gt;/gh-test.git
+</code></pre>
+<p><a href="https://github.com/">GitHub</a>에 접속해보면 리포지토리가 만들어진 것을 확인할 수 있다.</p>
+<h3 id="clone">Clone</h3>
+<pre><code class="language-shell"># 위에서 만든 리포지토리를 로컬로 클론한다.
+$ gh repo clone https://github.com/trapkka997/gh-test 
+
+# output
+Cloning into 'gh-test'...
+warning: You appear to have cloned an empty repository.
+</code></pre>
+<h3 id="fork">Fork</h3>
+<pre><code class="language-shell"># 다른 리포지토리를 fork한다.
+$ gh repo fork https://github.com/cli/cli
+
+# output
+✓ Created fork trapkka997/cli
+? Would you like to clone the fork? Yes
+...
+✓ Cloned fork
+</code></pre>
+<h3 id="view">View</h3>
+<pre><code class="language-shell"># .git 파일이 존재하는 디렉토리에서 실행한다.
+$ gh repo view
+
+# output
+리포지토리를 확인할 수 있다.
+</code></pre>
+<h2 id="2gist">2. Gist</h2>
+<p>깃허브의 <strong>gist를 관리</strong>하는 명령어입니다.</p>
+<ul>
+<li><strong>Create</strong><br>
+새로운 gist를 생성합니다.</li>
+<li><strong>Edit</strong><br>
+gist를 편집합니다.</li>
+<li><strong>List</strong><br>
+gist들의 리스트를 표시합니다.</li>
+<li><strong>View</strong><br>
+특정한 gist를 표시합니다.</li>
+</ul>
+<hr>
+<h3 id="create">Create</h3>
+<pre><code class="language-shell"># gist-test.txt파일을 gist에 생성을 한다.
+$ gh gist create gist-test.txt -d &quot;gh-gist-test&quot;
+
+# output
+- Creating gist gist-test.txt
+✓ Created gist gist-test.txt
+</code></pre>
+<p>Gist가 생성이 되었는지 생성이 된 것을 확인할 수 있다.</p>
+<script src="https://gist.github.com/trapkka997/81c72373800ab970379c2732a7fe7d0e.js"></script>
+<h3 id="edit">Edit</h3>
+<pre><code class="language-shell"># 편집 명령어
+$ gh gist edit {&lt;gist ID&gt; | &lt;gist URL&gt;}
+
+# output
+편집할 수 있는 NANO같은 에디터가 표시가 됨.
+</code></pre>
+<h3 id="list">List</h3>
+<pre><code class="language-shell"># 리스트 명령어 * ls는 되지 않습니다.
+$ gh gist list
+
+# output
+&lt;gist ID&gt;  gh-gist-test  1 file  secret  about 2 minutes ago
+</code></pre>
+<h3 id="view">view</h3>
+<pre><code class="language-shell"># 확인 명령어
+$ gh gist list {&lt;gist id&gt; | &lt;gist url&gt;}
+
+# output
+gh-gist-test
+gist 테스트입니다.
+</code></pre>
+<h2 id="3issue">3. Issue</h2>
+<p>깃허브의 <strong>issue를 관리</strong>하는 명령어입니다.</p>
+<ul>
+<li><strong>Create</strong><br>
+새로운 issue를 생성합니다.</li>
+<li><strong>Close</strong><br>
+issue를 클로즈합니다.</li>
+<li><strong>List</strong><br>
+현재의 리포지토리에 이슈들의 리스트를 표시합니다.</li>
+<li><strong>Reopen</strong><br>
+issue를 다시 open합니다.</li>
+<li><strong>Status</strong><br>
+관련된 issue의 상태를 확입니다.</li>
+<li><strong>View</strong><br>
+특정한 issue를 표시합니다.</li>
+</ul>
+<hr>
+<h3 id="create">Create</h3>
+<pre><code class="language-shell"># .git파일이 존재하는 디렉토리에서 실행한다.
+$ gh issue create --title &quot;I found a bug&quot; --body &quot;Nothing works&quot;
+
+# output
+Creating issue in trapkka997/gh-test
+https://github.com/trapkka997/gh-test/issues/1
+</code></pre>
+<p>이슈가 생성된 것을 확인할 수 있다.<br>
+<img src="/content/images/2020/09/gh1.png" alt="gh1" loading="lazy"></p>
+<h3 id="close">Close</h3>
+<pre><code class="language-shell"># .git파일이 존재하는 디렉토리에서 실행한다.
+$ gh issue close {&lt;number&gt; | &lt;url&gt;}
+
+# output
+Closed issue #1 (I found a bug)
+</code></pre>
+<p>이슈가 클로즈 된 것을 확인할 수 있다.<br>
+<img src="/content/images/2020/09/gh2.png" alt="gh2" loading="lazy"></p>
+<h3 id="list">List</h3>
+<pre><code class="language-shell"># .git파일이 존재하는 디렉토리에서 실행한다.
+$ gh issue list -s all 
+
+# output
+Showing 1 of 1 issue in trapkka997/gh-test that matches your search
+#1  I found a bug    about 15 minutes ago
+</code></pre>
+<h3 id="reopen">Reopen</h3>
+<pre><code class="language-shell"># .git파일이 존재하는 디렉토리에서 실행한다.
+$ gh issue reopen {&lt;number&gt; | &lt;url&gt;} [flags]
+
+# output
+✔ Reopened issue #1 (I found a bug)
+</code></pre>
+<h3 id="status">status</h3>
+<pre><code class="language-shell"># .git파일이 존재하는 디렉토리에서 실행한다.
+$ gh issue status
+
+# output
+Relevant issues in trapkka997/gh-test
+
+Issues assigned to you
+  There are no issues assigned to you
+
+Issues mentioning you
+  There are no issues mentioning you
+
+Issues opened by you
+  #1  I found a bug    about 5 minutes ago
+</code></pre>
+<h3 id="view">view</h3>
+<pre><code class="language-shell"># .git파일이 존재하는 디렉토리에서 실행한다.
+$ gh issue view {&lt;number&gt; | &lt;url&gt;} [flags]
+
+# output
+I found a bug
+Open • trapkka997 opened about 44 minutes ago • 0 comments
+  Nothing works                                                               
+View this issue on GitHub: https://github.com/trapkka997/gh-test/issues/1
+</code></pre>
+<h2 id="4pr">4. PR</h2>
+<p>깃허브의 <strong>풀, 리퀘스트를 관리</strong>하는 명령어입니다.</p>
+<ul>
+<li><strong>Checkout</strong><br>
+체크아웃 합니다.</li>
+<li><strong>Checks</strong><br>
+CI 상태를 표시합니다.</li>
+<li><strong>Close</strong><br>
+현재의 리포지토리에 이슈들의 리스트를 표시합니다.</li>
+<li><strong>Create</strong><br>
+pr을 생성합니다.</li>
+<li><strong>Diff</strong><br>
+변화한 내용을 표시합니다.</li>
+<li><strong>List</strong><br>
+pr들의 리스트를 표시합니다.</li>
+<li><strong>Merge</strong><br>
+merge 합니다.</li>
+<li><strong>Ready</strong><br>
+ready상태로 만듭니다.</li>
+<li><strong>Reopen</strong><br>
+pr을 Reopen합니다.</li>
+<li><strong>Review</strong><br>
+pr에 리뷰를 추가합니다.</li>
+<li><strong>View</strong><br>
+특정한 pr을 표시합니다.</li>
+</ul>
+<hr>
+<h3 id="checkout">Checkout</h3>
+<pre><code class="language-shell"># .git파일이 존재하는 디렉토리에서 실행한다.
+$ gh pr checkout {&lt;number&gt; | &lt;url&gt; | &lt;branch&gt;} [flags]
+
+# output
+Switched to branch 'trapkka997'
+Your branch is up to date with 'origin/trapkka997'.
+Already up to date.
+</code></pre>
+<h3 id="checks">Checks</h3>
+<pre><code class="language-shell"># .git파일이 존재하는 디렉토리에서 실행한다.
+$ gh pr checks
+
+# output
+</code></pre>
+<h3 id="close">Close</h3>
+<pre><code class="language-shell"># .git파일이 존재하는 디렉토리에서 실행한다.
+$ gh pr close {&lt;number&gt; | &lt;url&gt; | &lt;branch&gt;} [flags]
+
+# output
+✔ Closed pull request #3 (두 번째 pr)
+</code></pre>
+<h3 id="create">Create</h3>
+<pre><code class="language-shell"># .git파일이 존재하는 디렉토리에서 실행한다.
+$ gh pr create
+
+# output
+? Title The bug is fixed!
+? Body &lt;Received&gt;
+? What's next? Submit
+https://github.com/trapkka997/gh-test/pull/2
+</code></pre>
+<p>pr이 생성된 것을 확인할 수 있다.<br>
+<img src="/content/images/2020/09/gh3.png" alt="gh3" loading="lazy"></p>
+<h3 id="diff">Diff</h3>
+<pre><code class="language-shell"># .git파일이 존재하는 디렉토리에서 실행한다.
+$ gh pr diff [&lt;number&gt; | &lt;url&gt; | &lt;branch&gt;] [flags]
+
+# output
+diff --git a/README.md b/README.md
+index 3682bf3..272afa4 100644
+--- a/README.md
++++ b/README.md
+@@ -1,4 +1,4 @@
+-# GH-TEST
++## GH-TEST
+
+ GitHub CLI
+--- add ghb
+\ No newline at end of file
++깃허브 CLI
+
+</code></pre>
+<h3 id="list">List</h3>
+<pre><code class="language-shell"># .git파일이 존재하는 디렉토리에서 실행한다.
+$ gh pr list
+
+# output
+Showing 1 of 1 open pull request in test-gth/test-gh
+#1  help this  trapkka997:trapkka997
+(END)
+</code></pre>
+<h3 id="merge">Merge</h3>
+<pre><code class="language-shell"># .git파일이 존재하는 디렉토리에서 실행한다.
+$ gh pr merge
+
+# output
+? What merge method would you like to use? Create a merge commit
+? Delete the branch locally and on GitHub? Yes
+✔ Merged pull request #2 (The bug is fixed!)
+✔ Deleted branch ghb and switched to branch master
+</code></pre>
+<h3 id="ready">Ready</h3>
+<pre><code class="language-shell"># .git파일이 존재하는 디렉토리에서 실행한다.
+$ gh pr ready [&lt;number&gt; | &lt;url&gt; | &lt;branch&gt;] [flags]
+
+# output
+</code></pre>
+<h3 id="reopen">Reopen</h3>
+<pre><code class="language-shell"># .git파일이 존재하는 디렉토리에서 실행한다.
+$ gh pr reopen {&lt;number&gt; | &lt;url&gt;} [flags]
+
+# output
+✔ Reopened pull request #3 (두 번째 pr)
+</code></pre>
+<h3 id="review">Review</h3>
+<pre><code class="language-shell"># .git파일이 존재하는 디렉토리에서 실행한다.
+$ gh pr review {&lt;number&gt; | &lt;url&gt;} [flags]
+
+# output
+? What kind of review do you want to give? Request changes
+? Review body &lt;Received&gt;
+Got:
+  이상한데요..﻿                                                                
+? Submit? Yes
++ Requested changes to pull request #4
+</code></pre>
+<p><strong>Comment</strong>, <strong>Approve</strong>, <strong>Request Changes</strong>를 선택하여 리뷰를 남길 수 있습니다.</p>
+<h3 id="view">view</h3>
+<pre><code class="language-shell"># .git파일이 존재하는 디렉토리에서 실행한다.
+$ gh pr view {&lt;number&gt; | &lt;url&gt;} [flags]
+
+# output
+Open • trapkka997 wants to merge 1 commit into master from trapkka997
+  oops&lt;U+FEFF&gt;                                                                        
+View this pull request on GitHub: https://github.com/test-gth/test-gh/pull/1
+</code></pre>
+<h2 id="5release">5. Release</h2>
+<p>깃허브의 <strong>릴리즈를 관리</strong>하는 명령어입니다.</p>
+<ul>
+<li><strong>Create</strong><br>
+새로운 릴리즈를 생성합니다.</li>
+<li><strong>Delete</strong><br>
+릴리즈를 삭제합니다.</li>
+<li><strong>Download</strong></li>
+<li><strong>List</strong></li>
+<li><strong>Upload</strong></li>
+<li><strong>view</strong><br>
+릴리즈의 대한 정보를 표시합니다.</li>
+</ul>
+<hr>
+<h3 id="create">Create</h3>
+<pre><code class="language-shell"># .git파일이 존재하는 디렉토리에서 실행한다.
+$ gh release create v1.0.1   
+
+# output
+? Title (optional) Release v1.0.1 !
+? Release notes Write my own
+? Is this a prerelease? Yes
+? Submit? Publish release
+https://github.com/trapkka997/gh-test/releases/tag/v1.0.1
+</code></pre>
+<p>릴리즈가 생성된 것을 확인할 수 있다.<br>
+<img src="/content/images/2020/09/gh4.png" alt="gh4" loading="lazy"></p>
+<h3 id="delete">Delete</h3>
+<pre><code class="language-shell"># .git파일이 존재하는 디렉토리에서 실행한다.
+$ gh release delete &lt;tag&gt; [flags]
+
+# output
+Closed issue #1 (I found a bug)
+</code></pre>
+<h3 id="downolad">Downolad</h3>
+<pre><code class="language-shell"># .git파일이 존재하는 디렉토리에서 실행한다.
+$ gh release download [&lt;tag&gt;] [flags]
+
+# output asset이 다운로드 됨.
+</code></pre>
+<h3 id="list">List</h3>
+<pre><code class="language-shell"># .git파일이 존재하는 디렉토리에서 실행한다.
+$ gh release list [flags]
+
+# output
+Release v1.0.1 !  Pre-release  (v1.0.1)  about 4 hours ago
+</code></pre>
+<h3 id="upload">Upload</h3>
+<pre><code class="language-shell"># .git파일이 존재하는 디렉토리에서 실행한다.
+$ gh release upload &lt;tag&gt; &lt;files&gt;... [flags]
+
+# output
+Successfully uploaded 1 asset to v1.0.1
+</code></pre>
+<h3 id="view">View</h3>
+<pre><code class="language-shell"># .git파일이 존재하는 디렉토리에서 실행한다.
+$ gh release view [&lt;tag&gt;] [flags]
+
+# output
+v1.0.1
+Pre-release • trapkka997 released this about 4 hours ago
+  beta﻿                                                                        
+Assets
+test  12 B
+View on GitHub: https://github.com/trapkka997/gh-test/releases/tag/v1.0.1
+</code></pre>
+<h1 id="">결론</h1>
+<p><strong>GitHub CLI</strong>명령어들을 하나씩 써가면서 <strong>git</strong>과의 차이점을 생각해봤는데, 써보니까 느낀게 결국 <strong>GitHub</strong>에서 제공하는 기능들, 즉 <strong>GitHub</strong>에서만 가능한 것들 전부였습니다.<br>
+<strong>Git</strong>명령어로 <strong>GitHub</strong>에 있는 기능들을 쓰지 못하고, 물론 <strong>GitHub CLI</strong>명령어가 <strong>Git</strong>명령어을 대체할 수도 없고 양쪽 전부 써야하는 것을 느꼈습니다.(<strong>Git</strong>은 <strong>Git</strong>이고 <strong>GitHub</strong>는 <strong>GitHub</strong>였습니다.)<br>
+CLI를 이용하여 <strong>GitHub</strong>를 다룰 수 있다는 건, <strong>GitHub</strong>도 프로그램으로 인한 자동화가 된다는 것이고 더더욱 간편해질 것이라고 생각되네요.</p>
+<!--kg-card-end: markdown-->
+    </section>
+
+
+</article>
+
+<section class="footer-cta">
+    <div class="inner">
+        <h2>Sign up for more like this.</h2>
+        <a class="footer-cta-button" href="#/portal">
+            <div>Enter your email</div>
+            <span>Subscribe</span>
+        </a>
+    </div>
+</section>
+
+
+<aside class="read-more-wrap">
+    <div class="read-more inner">
+
+
+                    
+<article class="post-card post ">
+
+    <a class="post-card-image-link" href="/welcome/">
+        <img class="post-card-image"
+            srcset="https://static.ghost.org/v4.0.0/images/welcome-to-ghost.png 300w,
+                    https://static.ghost.org/v4.0.0/images/welcome-to-ghost.png 600w,
+                    https://static.ghost.org/v4.0.0/images/welcome-to-ghost.png 1000w,
+                    https://static.ghost.org/v4.0.0/images/welcome-to-ghost.png 2000w"
+            sizes="(max-width: 1000px) 400px, 800px"
+            src="https://static.ghost.org/v4.0.0/images/welcome-to-ghost.png"
+            alt="Start here for a quick overview of everything you need to know"
+            loading="lazy"
+        />
+    </a>
+
+    <div class="post-card-content">
+
+        <a class="post-card-content-link" href="/welcome/">
+            <header class="post-card-header">
+                <h2 class="post-card-title">Start here for a quick overview of everything you need to know</h2>
+            </header>
+            <section class="post-card-excerpt">
+                <p>We've crammed the most important information to help you get started with Ghost into this one post. It's your cheat-sheet to get started, and your shortcut to advanced features.</p>
+            </section>
+        </a>
+
+        <footer class="post-card-meta">
+            <ul class="author-list">
+                <li class="author-list-item">
+                    <a href="/author/ghost/" class="static-avatar">
+                        <img class="author-profile-image" src="https://static.ghost.org/v4.0.0/images/ghost-user.png" alt="Ghost" />
+                    </a>
+                </li>
+            </ul>
+            <div class="post-card-byline-content">
+                <span><a href="/author/ghost/">Ghost</a></span>
+                <span class="post-card-byline-date"><time datetime="2021-09-19">Sep 19, 2021</time> <span class="bull">&bull;</span> 2 min read</span>
+            </div>
+        </footer>
+
+    </div>
+
+</article>
+                    
+<article class="post-card post ">
+
+    <a class="post-card-image-link" href="/design/">
+        <img class="post-card-image"
+            srcset="https://static.ghost.org/v4.0.0/images/publishing-options.png 300w,
+                    https://static.ghost.org/v4.0.0/images/publishing-options.png 600w,
+                    https://static.ghost.org/v4.0.0/images/publishing-options.png 1000w,
+                    https://static.ghost.org/v4.0.0/images/publishing-options.png 2000w"
+            sizes="(max-width: 1000px) 400px, 800px"
+            src="https://static.ghost.org/v4.0.0/images/publishing-options.png"
+            alt="Customizing your brand and design settings"
+            loading="lazy"
+        />
+    </a>
+
+    <div class="post-card-content">
+
+        <a class="post-card-content-link" href="/design/">
+            <header class="post-card-header">
+                <h2 class="post-card-title">Customizing your brand and design settings</h2>
+            </header>
+            <section class="post-card-excerpt">
+                <p>How to tweak a few settings in Ghost to transform your site from a generic template to a custom brand with style and personality.</p>
+            </section>
+        </a>
+
+        <footer class="post-card-meta">
+            <ul class="author-list">
+                <li class="author-list-item">
+                    <a href="/author/ghost/" class="static-avatar">
+                        <img class="author-profile-image" src="https://static.ghost.org/v4.0.0/images/ghost-user.png" alt="Ghost" />
+                    </a>
+                </li>
+            </ul>
+            <div class="post-card-byline-content">
+                <span><a href="/author/ghost/">Ghost</a></span>
+                <span class="post-card-byline-date"><time datetime="2021-09-19">Sep 19, 2021</time> <span class="bull">&bull;</span> 3 min read</span>
+            </div>
+        </footer>
+
+    </div>
+
+</article>
+                    
+<article class="post-card post ">
+
+    <a class="post-card-image-link" href="/write/">
+        <img class="post-card-image"
+            srcset="https://static.ghost.org/v4.0.0/images/writing-posts-with-ghost.png 300w,
+                    https://static.ghost.org/v4.0.0/images/writing-posts-with-ghost.png 600w,
+                    https://static.ghost.org/v4.0.0/images/writing-posts-with-ghost.png 1000w,
+                    https://static.ghost.org/v4.0.0/images/writing-posts-with-ghost.png 2000w"
+            sizes="(max-width: 1000px) 400px, 800px"
+            src="https://static.ghost.org/v4.0.0/images/writing-posts-with-ghost.png"
+            alt="Writing and managing content in Ghost, an advanced guide"
+            loading="lazy"
+        />
+    </a>
+
+    <div class="post-card-content">
+
+        <a class="post-card-content-link" href="/write/">
+            <header class="post-card-header">
+                <h2 class="post-card-title">Writing and managing content in Ghost, an advanced guide</h2>
+            </header>
+            <section class="post-card-excerpt">
+                <p>A full overview of all the features built into the Ghost editor, including powerful workflow automations to speed up your creative process.</p>
+            </section>
+        </a>
+
+        <footer class="post-card-meta">
+            <ul class="author-list">
+                <li class="author-list-item">
+                    <a href="/author/ghost/" class="static-avatar">
+                        <img class="author-profile-image" src="https://static.ghost.org/v4.0.0/images/ghost-user.png" alt="Ghost" />
+                    </a>
+                </li>
+            </ul>
+            <div class="post-card-byline-content">
+                <span><a href="/author/ghost/">Ghost</a></span>
+                <span class="post-card-byline-date"><time datetime="2021-09-19">Sep 19, 2021</time> <span class="bull">&bull;</span> 5 min read</span>
+            </div>
+        </footer>
+
+    </div>
+
+</article>
+
+    </div>
+</aside>
+
+
+    </main>
+
+    <footer class="site-footer outer">
+        <div class="inner">
+            <section class="copyright"><a href="https://gyutaehan.github.io">코딩터</a> &copy; 2021</section>
+            <nav class="site-footer-nav">
+                
+            </nav>
+            <div><a href="https://ghost.org/" target="_blank" rel="noopener">Powered by Ghost</a></div>
+        </div>
+    </footer>
+
+</div>
+
+
+<script
+    src="https://code.jquery.com/jquery-3.5.1.min.js"
+    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+    crossorigin="anonymous">
+</script>
+<script src="/assets/built/casper.js?v=52f3894f9a"></script>
+<script>
+$(document).ready(function () {
+    // Mobile Menu Trigger
+    $('.gh-burger').click(function () {
+        $('body').toggleClass('gh-head-open');
+    });
+    // FitVids - Makes video embeds responsive
+    $(".gh-content").fitVids();
+});
+</script>
+
+<script src="https://kit.fontawesome.com/0d50ab648c.js" crossorigin="anonymous"></script>
+
+</body>
+</html>
