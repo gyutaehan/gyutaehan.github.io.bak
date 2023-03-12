@@ -1,37 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Contact</title>
-    <link rel="stylesheet" href="/assets/built/screen.css?v=17133e7623">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli:400,400i,700,700i,800">
 
-    <script>
-        if (localStorage.getItem('alto_dark') == 'true') {
-            document.documentElement.classList.add('dark-mode');
-        }
-    </script>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-    <link rel="canonical" href="https://gyutaehan.github.io/contact/" />
+	<title>Contact</title>
+	<meta name="HandheldFriendly" content="True" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<link rel="stylesheet" type="text/css" href="/assets/css/style.css?v=7c32fd6575" />
+
+	<script>
+			var siteUrl = 'http://localhost';
+	</script>
+
+	<script>
+			var localTheme = localStorage.getItem('attila_theme');
+			switch (localTheme) {
+					case 'dark':
+							document.documentElement.classList.add('theme-dark');
+							break;
+					case 'light':
+							document.documentElement.classList.add('theme-light');
+							break;
+					default:
+							break;
+			}
+	</script>
+
+
+
+			<style>
+				.theme-dark:root {
+				  --ghost-accent-color: #ff6633;
+				}
+				@media (prefers-color-scheme: dark) {
+				  html:not(.theme-light):root {
+				    --ghost-accent-color: #ff6633;
+				  }
+				}
+			</style>
+
+	<link rel="canonical" href="http://localhost/contact/" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
     
     <meta property="og:site_name" content="코딩터" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Contact" />
-    <meta property="og:description" content="If you want to set up a contact page for people to be able to reach out to you, the simplest way is to set up a simple page like this and list the different ways people can reach out to you. For example, here&#x27;s how to reach us!@Ghost" />
-    <meta property="og:url" content="https://gyutaehan.github.io/contact/" />
-    <meta property="article:published_time" content="2021-09-19T11:27:08.000Z" />
-    <meta property="article:modified_time" content="2021-09-19T11:27:01.000Z" />
+    <meta property="og:description" content="Gyutae, Han" />
+    <meta property="og:url" content="http://localhost/contact/" />
+    <meta property="og:image" content="http://localhost/content/images/2021/11/me-1.JPEG" />
+    <meta property="article:published_time" content="2021-11-06T12:40:46.000Z" />
+    <meta property="article:modified_time" content="2021-11-09T13:56:38.000Z" />
+    
     <meta property="article:publisher" content="https://www.facebook.com/100017130408671" />
     <meta property="article:author" content="https://www.facebook.com/ghost" />
-    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Contact" />
-    <meta name="twitter:description" content="If you want to set up a contact page for people to be able to reach out to you, the simplest way is to set up a simple page like this and list the different ways people can reach out to you. For example, here&#x27;s how to reach us!@Ghost" />
-    <meta name="twitter:url" content="https://gyutaehan.github.io/contact/" />
+    <meta name="twitter:description" content="Gyutae, Han" />
+    <meta name="twitter:url" content="http://localhost/contact/" />
+    <meta name="twitter:image" content="http://localhost/content/images/2021/11/me-1.JPEG" />
     <meta name="twitter:label1" content="Written by" />
     <meta name="twitter:data1" content="Ghost" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="" />
     <meta name="twitter:site" content="@trapkka997" />
     <meta name="twitter:creator" content="ghost" />
     
@@ -42,12 +75,10 @@
     "publisher": {
         "@type": "Organization",
         "name": "코딩터",
-        "url": "https://gyutaehan.github.io/",
+        "url": "http://localhost/",
         "logo": {
             "@type": "ImageObject",
-            "url": "https://gyutaehan.github.io/favicon.ico",
-            "width": 48,
-            "height": 48
+            "url": "http://localhost/favicon.ico"
         }
     },
     "author": {
@@ -59,7 +90,7 @@
             "width": 400,
             "height": 400
         },
-        "url": "https://gyutaehan.github.io/author/ghost/",
+        "url": "http://localhost/author/ghost-user/",
         "sameAs": [
             "https://ghost.org",
             "https://www.facebook.com/ghost",
@@ -67,20 +98,24 @@
         ]
     },
     "headline": "Contact",
-    "url": "https://gyutaehan.github.io/contact/",
-    "datePublished": "2021-09-19T11:27:08.000Z",
-    "dateModified": "2021-09-19T11:27:01.000Z",
-    "description": "If you want to set up a contact page for people to be able to reach out to you,\nthe simplest way is to set up a simple page like this and list the different\nways people can reach out to you.\n\nFor example, here&#x27;s how to reach us!\n * @Ghost [https://twitter.com/ghost] on Twitter\n * @Ghost [https://www.facebook.com/ghost] on Facebook\n * @Ghost [https://instagram.com/ghost] on Instagram\n\nIf you prefer to use a contact form, almost all of the great embedded form\nservices work great with Ghost and are",
+    "url": "http://localhost/contact/",
+    "datePublished": "2021-11-06T12:40:46.000Z",
+    "dateModified": "2021-11-09T13:56:38.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://localhost/content/images/2021/11/me-1.JPEG"
+    },
+    "description": "Gyutae, Han\n\n\n",
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://gyutaehan.github.io/"
+        "@id": "http://localhost/"
     }
 }
     </script>
 
-    <meta name="generator" content="Ghost 4.15" />
-    <link rel="alternate" type="application/rss+xml" title="코딩터" href="https://gyutaehan.github.io/rss/" />
-    <script defer src="https://unpkg.com/@tryghost/portal@~1.9.0/umd/portal.min.js" data-ghost="https://gyutaehan.github.io/" crossorigin="anonymous"></script><style id="gh-members-styles">.gh-post-upgrade-cta-content,
+    <meta name="generator" content="Ghost 5.38" />
+    <link rel="alternate" type="application/rss+xml" title="코딩터" href="http://localhost/rss/" />
+    <script defer src="https://cdn.jsdelivr.net/ghost/portal@~2.25/umd/portal.min.js" data-ghost="http://localhost/" data-key="f1bf6fdeb63e0aba7cabc15196" data-api="http://localhost/ghost/api/content/" crossorigin="anonymous"></script><style id="gh-members-styles">.gh-post-upgrade-cta-content,
 .gh-post-upgrade-cta {
     display: flex;
     flex-direction: column;
@@ -144,7 +179,13 @@
 .gh-post-upgrade-cta a.gh-btn:hover {
     opacity: 0.92;
 }</style>
+    <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/sodo-search.min.js" data-key="f1bf6fdeb63e0aba7cabc15196" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/main.css" data-sodo-search="http://localhost/" crossorigin="anonymous"></script>
+    <link href="http://localhost/webmentions/receive/" rel="webmention" />
+    <script defer src="/public/cards.min.js?v=7c32fd6575"></script>
+    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=7c32fd6575">
+    <script defer src="/public/member-attribution.min.js?v=7c32fd6575"></script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
+<!-- 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-KMJDLT47M7"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -153,98 +194,141 @@
 
   gtag('config', 'G-KMJDLT47M7');
 </script>
+ -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4PQM83TTBG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4PQM83TTBG');
+</script>
 <script data-ad-client="ca-pub-5386847665218807" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <script>var disqus = 'gyutaehan-me';</script><style>:root {--ghost-accent-color: #FF1A75;}</style>
 </head>
 
-<body class="page-template page-contact">
-    <div class="site">
-        <header class="site-header container">
-    <div class="navbar">
-        <div class="navbar-left">
-            <div class="burger hidden-lg hidden-xl"></div>
-            <a class="logo" href="https://gyutaehan.github.io">
-        <span class="logo-text">코딩터</span>
-</a>            <div class="sep hidden-xs hidden-sm hidden-sm"></div>
-                <nav class="main-menu hidden-xs hidden-sm hidden-md">
-                    <ul class="nav-list u-plain-list">
-        <li class="menu-item menu-item-home"><a class="menu-item-link"
-                href="https://gyutaehan.github.io/">Home</a></li>
-        <li class="menu-item menu-item-study"><a class="menu-item-link"
-                href="https://gyutaehan.github.io/tag/study/">Study</a></li>
-        <li class="menu-item menu-item-kubernetes"><a class="menu-item-link"
-                href="https://gyutaehan.github.io/tag/Kubernetes/">Kubernetes</a></li>
-        <li class="menu-item menu-item-ibm-c-louders"><a class="menu-item-link"
-                href="https://gyutaehan.github.io/tag/ibmclouders/">IBM C:LOUDERs</a></li>
+<body class="page-template page-contact tag-hash-import-2023-03-12-14-11">
+
+	<div class="nav-header">
+		<nav class="nav-wrapper" aria-label="Main">
+				<ul>
+		<li class="nav-home"><a href="http://localhost:2368/"><span>Home</span></a></li>
+		<li class="nav-study"><a href="http://localhost:2368/tag/study/"><span>Study</span></a></li>
+		<li class="nav-kubernetes"><a href="http://localhost:2368/tag/Kubernetes/"><span>Kubernetes</span></a></li>
+		<li class="nav-ibm-c-louders"><a href="http://localhost:2368/tag/ibmclouders/"><span>IBM C:LOUDERs</span></a></li>
+		<li class="nav-author"><a href="http://localhost:2368/contact/"><span>Author</span></a></li>
 </ul>
-                </nav>
-        </div>
-        <div class="navbar-right">
-            <div class="toggle-track">
-                <div class="toggle-moon"><i class="icon icon-brightness-2"></i></div>
-                <div class="toggle-sun"><i class="icon icon-white-balance-sunny"></i></div>
-                <div class="toggle-thumb"></div>
-            </div>
-        </div>
-    </div>
-</header>        <div class="site-content">
-            
-<div class="content-area">
-    <main class="site-main">
-            <article class="post no-image page no-image single-post">
-                <header class="post-header big-title container medium">
-        <h1 class="post-title">Contact</h1>
-</header>                                <div class="post-content kg-canvas u-text-format">
-                    <p>If you want to set up a contact page for people to be able to reach out to you, the simplest way is to set up a simple page like this and list the different ways people can reach out to you.</p><h3 id="for-example-heres-how-to-reach-us">For example, here's how to reach us!</h3><ul><li><a href="https://twitter.com/ghost">@Ghost</a> on Twitter</li><li><a href="https://www.facebook.com/ghost">@Ghost</a> on Facebook</li><li><a href="https://instagram.com/ghost">@Ghost</a> on Instagram</li></ul><p>If you prefer to use a contact form, almost all of the great embedded form services work great with Ghost and are easy to set up:</p><figure class="kg-card kg-image-card"><a href="https://ghost.org/integrations/?tag=forms"><img src="https://static.ghost.org/v4.0.0/images/integrations.png" class="kg-image" alt loading="lazy" width="2944" height="1716"></a></figure>
-                </div>
-            </article>
-    </main>
-</div>
-        </div>
-        <footer class="site-footer container large">
-    <div class="copyright">
-        Powered by <a href="https://ghost.org/" target="_blank" rel="noopener">Ghost</a>
-    </div>
 
-        <a class="logo" href="https://gyutaehan.github.io">
-        <span class="logo-text">코딩터</span>
-</a>
-    <div class="footer-social">
-            <a class="footer-social-item footer-social-item-facebook" href="https://www.facebook.com/100017130408671"
-                target="_blank" rel="noopener" aria-label="Facebook">
-                <i class="icon icon-facebook"></i>
-            </a>
-            <a class="footer-social-item footer-social-item-twitter" href="https://twitter.com/trapkka997"
-                target="_blank" rel="noopener" aria-label="Twitter">
-                <i class="icon icon-twitter"></i>
-            </a>
-        <a class="footer-social-item footer-social-item-rss"
-            href="https://feedly.com/i/subscription/feed/https://gyutaehan.github.io/rss/" target="_blank" rel="noopener"
-            aria-label="RSS">
-            <i class="icon icon-rss"></i>
-        </a>
-    </div>
-</footer>    </div>
+				<ul class="nav-meta">
+  <li class="nav-twitter">
+    <a aria-label="Twitter" href="https://twitter.com/trapkka997" title="@trapkka997" target="_blank">
+      <i class="icon icon-twitter" aria-hidden="true"></i>
+      <span>@trapkka997</span>
+    </a>
+  </li>
+  <li class="nav-facebook">
+    <a aria-label="Facebook" href="https://www.facebook.com/100017130408671" title="100017130408671" target="_blank">
+      <i class="icon icon-facebook" aria-hidden="true"></i>
+      <span>100017130408671</span>
+    </a>
+  </li>
+  <li class="nav-search">
+    <a title="Search" data-ghost-search>
+      <i class="icon icon-search" aria-hidden="true"></i>
+      <span>Search</span>
+    </a>
+  </li>
+</ul>
+		</nav>
 
-    <div class="dimmer"></div>
+		<div class="nav-wrapper-control">
+			<div class="inner">
+				<a class="nav-menu" role="button"><i class="icon icon-menu" aria-hidden="true"></i>Menu</a>
+				<a class="nav-search" title="Search" role="button" data-ghost-search><i class="icon icon-search" aria-hidden="true"></i></a>
+			</div>
+		</div>
+	</div>
+	<div class="nav-close" role="button" aria-label="Close"></div>
 
-    <div class="off-canvas">
-        <div class="canvas-close">
-            <i class="canvas-icon icon icon-window-close"></i>
-        </div>
-        <div class="mobile-menu"></div>
-    </div>
+	<section class="page-wrapper">
 
-    <script
-        src="https://code.jquery.com/jquery-3.5.1.min.js"
-        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
-        crossorigin="anonymous">
-    </script>
-    <script src="/assets/built/main.min.js?v=17133e7623"></script>
+		
 
-    
+<header class="post-header  has-cover ">
+	<div class="inner">
+		<h1 class="post-title">Contact</h1>
+		<div class="post-cover cover">
+			<img
+			srcset="/content/images/size/w320/2021/11/me-1.JPEG 320w,
+							/content/images/size/w640/2021/11/me-1.JPEG 640w,
+							/content/images/size/w960/2021/11/me-1.JPEG 960w,
+							/content/images/size/w1920/2021/11/me-1.JPEG 1920w"
+			src="/content/images/size/w1920/2021/11/me-1.JPEG"
+			alt="Contact" />
+		</div>
+	</div>
+</header>
 
-    <script src="https://kit.fontawesome.com/0d50ab648c.js" crossorigin="anonymous"></script>
+<main class="content" role="main">
+	<article class="post tag-hash-import-2023-03-12-14-11">
+		<div class="inner">
+
+			<section class="post-content">
+				<h1 id="gyutae-han">Gyutae, Han</h1><hr><!--kg-card-begin: markdown--><p><a href="http://localhost/"><img src="https://img.shields.io/badge/blog-gyutaehan.me-black" alt="My Blog" loading="lazy"></a><a href="mailto:gyutaehan.me@gmail.com?ref=kodingteo"><img src="https://camo.githubusercontent.com/90f590ec0064efaf4bcd908a73827f7fb8a46e2d/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f2d476d61696c2d6331343433383f7374796c653d666c61742d737175617265266c6f676f3d476d61696c266c6f676f436f6c6f723d7768697465266c696e6b3d6d61696c746f3a79756e686f3031333040676d61696c2e636f6d" alt="Gmail Badge" loading="lazy"></a><a href="https://www.facebook.com/profile.php?id=100017130408671"><img src="https://camo.githubusercontent.com/a90223e9c94b22b83f096a70fe05d7e0c85de78f/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f2d46616365626f6f6b2d3138373766323f7374796c653d666c61742d737175617265266c6f676f3d66616365626f6f6b266c6f676f436f6c6f723d7768697465266c696e6b3d68747470733a2f2f7777772e66616365626f6f6b2e636f6d2f79756e686f30313330" alt="Facebook Badge" loading="lazy"></a><a href="https://www.instagram.com/kantmuyu/?ref=kodingteo"><img src="https://camo.githubusercontent.com/4377bb4ece6f9acf63ee9056a1ccca43779e2013/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f2d496e7374616772616d2d6464326137623f7374796c653d666c61742d737175617265266c6f676f3d696e7374616772616d266c6f676f436f6c6f723d7768697465266c696e6b3d68747470733a2f2f7777772e696e7374616772616d2e636f6d2f79756e686f2e6d38382f" alt="Instagram Badge" loading="lazy"></a><a href="https://dev.to/trapkka997?ref=kodingteo"><img src="https://d2fltix0v2e0sb.cloudfront.net/dev-badge.svg" alt="Han Gyu-Tae's DEV Profile" height="20" width="20"></a><a href="https://twitter.com/trapkka997?ref=kodingteo"><img src="https://img.shields.io/twitter/follow/trapkka997?style=social" alt="twitfw" loading="lazy"></a></p>
+<!--kg-card-end: markdown-->
+			</section>
+
+		</div>
+	</article>
+</main>
+
+
+
+
+		<div class="nav-footer">
+			<nav class="nav-wrapper" aria-label="Footer">
+				<span class="nav-copy">코딩터 &copy; 2023  <a class="nav-rss" title="RSS" href="http://localhost/rss/" target="_blank"><i class="icon icon-rss" aria-hidden="true"></i></a></span>
+				<span class="nav-credits">Published with <a href="https://ghost.org">Ghost</a> &bull; Theme <a href="https://github.com/zutrinken/attila">Attila</a> &bull; <a class="menu-item js-theme" href="#" data-system="System theme" data-dark="Dark theme" data-light="Light theme"><span class="theme-icon"></span><span class="theme-text">System theme</span> </a> </span>
+			</nav>
+		</div>
+
+	</section>
+
+	<script type="text/javascript" src="/assets/js/script.js?v=7c32fd6575"></script>
+
+	<script>
+  $(document).ready(function () {
+		var post = $('.post-content');
+		// Responsive videos with fitVids
+    post.fitVids();
+		// Format code blocks and add line numbers
+		function codestyling() {
+	    $('pre code').each(function(i, e) {
+				// Code highlight
+	      hljs.highlightElement(e);
+	      // No lines for plain text blocks
+	      if (!$(this).hasClass('language-text')) {
+	        var code = $(this);
+					// Calculate amount of lines
+	        var lines = code.html().split(/\n(?!$)/g).length;
+	        var numbers = [];
+	        if (lines > 1) {
+	          lines++;
+	        }
+	        for (i = 1; i < lines; i++) {
+	          numbers += '<span class="line" aria-hidden="true">' + i + '</span>';
+	        }
+	        code.parent().append('<div class="lines">' + numbers + '</div>');
+	      }
+	    });
+	  }
+	  codestyling();
+  });
+</script>
+
+
+	<script src="https://kit.fontawesome.com/0d50ab648c.js" crossorigin="anonymous"></script>
+
 </body>
-
 </html>

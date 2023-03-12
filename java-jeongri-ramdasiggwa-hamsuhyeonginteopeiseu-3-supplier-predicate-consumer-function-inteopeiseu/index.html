@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+	<title>Java 정리, 람다식과 함수형인터페이스 - 3. Supplier,Predicate,Consumer,Function 인터페이스</title>
+	<meta name="HandheldFriendly" content="True" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<link rel="stylesheet" type="text/css" href="/assets/css/style.css?v=7c32fd6575" />
+
+	<script>
+			var siteUrl = 'http://localhost';
+	</script>
+
+	<script>
+			var localTheme = localStorage.getItem('attila_theme');
+			switch (localTheme) {
+					case 'dark':
+							document.documentElement.classList.add('theme-dark');
+							break;
+					case 'light':
+							document.documentElement.classList.add('theme-light');
+							break;
+					default:
+							break;
+			}
+	</script>
+
+
+
+			<style>
+				.theme-dark:root {
+				  --ghost-accent-color: #ff6633;
+				}
+				@media (prefers-color-scheme: dark) {
+				  html:not(.theme-light):root {
+				    --ghost-accent-color: #ff6633;
+				  }
+				}
+			</style>
+
+	<link rel="canonical" href="http://localhost/java-jeongri-ramdasiggwa-hamsuhyeonginteopeiseu-3-supplier-predicate-consumer-function-inteopeiseu/" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <link rel="amphtml" href="http://localhost/java-jeongri-ramdasiggwa-hamsuhyeonginteopeiseu-3-supplier-predicate-consumer-function-inteopeiseu/amp/" />
+    
+    <meta property="og:site_name" content="코딩터" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Java 정리, 람다식과 함수형인터페이스 - 3. Supplier,Predicate,Consumer,Function 인터페이스" />
+    <meta property="og:description" content="※이 글은 Java SE 8 기준으로 작성되었습니다.
+
+
+
+자바에서 기본적으로 제공되는 함수형 인터페이스는 java.util.function에 포함되어있는데, 대표적으로 Supplier,Predicate,Consumer,Function가 있음.
+
+
+
+1. Supplier 인터페이스
+
+
+package java.util.function;
+
+@FunctionalInterface
+public interface Supplier&lt;T&gt; {
+    T get();
+}
+
+
+
+Supplier 인터페이스는 인수가 없고 특정 값을 리턴을 하는 특징이 있음.
+
+
+get이라는 추상 메서드을 이용함." />
+    <meta property="og:url" content="http://localhost/java-jeongri-ramdasiggwa-hamsuhyeonginteopeiseu-3-supplier-predicate-consumer-function-inteopeiseu/" />
+    <meta property="article:published_time" content="2021-12-05T10:26:13.000Z" />
+    <meta property="article:modified_time" content="2021-12-05T10:27:13.000Z" />
+    <meta property="article:tag" content="Java" />
+    <meta property="article:tag" content="study" />
+    
+    <meta property="article:publisher" content="https://www.facebook.com/100017130408671" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Java 정리, 람다식과 함수형인터페이스 - 3. Supplier,Predicate,Consumer,Function 인터페이스" />
+    <meta name="twitter:description" content="※이 글은 Java SE 8 기준으로 작성되었습니다.
+
+
+
+자바에서 기본적으로 제공되는 함수형 인터페이스는 java.util.function에 포함되어있는데, 대표적으로 Supplier,Predicate,Consumer,Function가 있음.
+
+
+
+1. Supplier 인터페이스
+
+
+package java.util.function;
+
+@FunctionalInterface
+public interface Supplier&lt;T&gt; {
+    T get();
+}
+
+
+
+Supplier 인터페이스는 인수가 없고 특정 값을 리턴을 하는 특징이 있음.
+
+
+get이라는 추상 메서드을 이용함." />
+    <meta name="twitter:url" content="http://localhost/java-jeongri-ramdasiggwa-hamsuhyeonginteopeiseu-3-supplier-predicate-consumer-function-inteopeiseu/" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Gyutae Han" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Java, study" />
+    <meta name="twitter:site" content="@trapkka997" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "코딩터",
+        "url": "http://localhost/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "http://localhost/favicon.ico"
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Gyutae Han",
+        "url": "http://localhost/author/gyutae/",
+        "sameAs": []
+    },
+    "headline": "Java 정리, 람다식과 함수형인터페이스 - 3. Supplier,Predicate,Consumer,Function 인터페이스",
+    "url": "http://localhost/java-jeongri-ramdasiggwa-hamsuhyeonginteopeiseu-3-supplier-predicate-consumer-function-inteopeiseu/",
+    "datePublished": "2021-12-05T10:26:13.000Z",
+    "dateModified": "2021-12-05T10:27:13.000Z",
+    "keywords": "Java, study",
+    "description": "\n\n\n※이 글은 Java SE 8 기준으로 작성되었습니다.\n\n\n\n자바에서 기본적으로 제공되는 함수형 인터페이스는 java.util.function에 포함되어있는데, 대표적으로 Supplier,Predicate,Consumer,Function가 있음.\n\n\n\n1. Supplier 인터페이스\n\n\npackage java.util.function;\n\n@FunctionalInterface\npublic interface Supplier&lt;T&gt; {\n    T get();\n}\n\n\n\nSupplier 인터페이스는 인수가 없고 특정 값을 리턴을 하는 특징이 있음.\n\n\nget이라는 추상 메서드을 이용함.\n\n\n\n사용법\n\n\nSupplier&lt;Integer&gt; si &#x3D; ()-&gt; 10;\nSystem.out.println(si.get()); // 10 출력\n\nSupplier&lt;Boolean&gt; sb &#x3D; ()-&gt; true;\nSystem.out.println(sb.get()); // true 출력\n\nSupplier&lt;String",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://localhost/"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 5.38" />
+    <link rel="alternate" type="application/rss+xml" title="코딩터" href="http://localhost/rss/" />
+    <script defer src="https://cdn.jsdelivr.net/ghost/portal@~2.25/umd/portal.min.js" data-ghost="http://localhost/" data-key="f1bf6fdeb63e0aba7cabc15196" data-api="http://localhost/ghost/api/content/" crossorigin="anonymous"></script><style id="gh-members-styles">.gh-post-upgrade-cta-content,
+.gh-post-upgrade-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+    width: 100%;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.gh-post-upgrade-cta-content {
+    border-radius: 8px;
+    padding: 40px 4vw;
+}
+
+.gh-post-upgrade-cta h2 {
+    color: #ffffff;
+    font-size: 28px;
+    letter-spacing: -0.2px;
+    margin: 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta p {
+    margin: 20px 0 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta small {
+    font-size: 16px;
+    letter-spacing: -0.2px;
+}
+
+.gh-post-upgrade-cta a {
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: 500;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a:hover {
+    color: #ffffff;
+    opacity: 0.8;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a.gh-btn {
+    display: block;
+    background: #ffffff;
+    text-decoration: none;
+    margin: 28px 0 0;
+    padding: 8px 18px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.gh-post-upgrade-cta a.gh-btn:hover {
+    opacity: 0.92;
+}</style>
+    <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/sodo-search.min.js" data-key="f1bf6fdeb63e0aba7cabc15196" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/main.css" data-sodo-search="http://localhost/" crossorigin="anonymous"></script>
+    <link href="http://localhost/webmentions/receive/" rel="webmention" />
+    <script defer src="/public/cards.min.js?v=7c32fd6575"></script>
+    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=7c32fd6575">
+    <script defer src="/public/member-attribution.min.js?v=7c32fd6575"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<!-- 
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KMJDLT47M7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KMJDLT47M7');
+</script>
+ -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4PQM83TTBG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4PQM83TTBG');
+</script>
+<script data-ad-client="ca-pub-5386847665218807" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>var disqus = 'gyutaehan-me';</script><style>:root {--ghost-accent-color: #FF1A75;}</style>
+</head>
+
+<body class="post-template tag-java tag-study tag-hash-import-2023-03-12-14-11">
+
+	<div class="nav-header">
+		<nav class="nav-wrapper" aria-label="Main">
+				<ul>
+		<li class="nav-home"><a href="http://localhost:2368/"><span>Home</span></a></li>
+		<li class="nav-study"><a href="http://localhost:2368/tag/study/"><span>Study</span></a></li>
+		<li class="nav-kubernetes"><a href="http://localhost:2368/tag/Kubernetes/"><span>Kubernetes</span></a></li>
+		<li class="nav-ibm-c-louders"><a href="http://localhost:2368/tag/ibmclouders/"><span>IBM C:LOUDERs</span></a></li>
+		<li class="nav-author"><a href="http://localhost:2368/contact/"><span>Author</span></a></li>
+</ul>
+
+				<ul class="nav-meta">
+  <li class="nav-twitter">
+    <a aria-label="Twitter" href="https://twitter.com/trapkka997" title="@trapkka997" target="_blank">
+      <i class="icon icon-twitter" aria-hidden="true"></i>
+      <span>@trapkka997</span>
+    </a>
+  </li>
+  <li class="nav-facebook">
+    <a aria-label="Facebook" href="https://www.facebook.com/100017130408671" title="100017130408671" target="_blank">
+      <i class="icon icon-facebook" aria-hidden="true"></i>
+      <span>100017130408671</span>
+    </a>
+  </li>
+  <li class="nav-search">
+    <a title="Search" data-ghost-search>
+      <i class="icon icon-search" aria-hidden="true"></i>
+      <span>Search</span>
+    </a>
+  </li>
+</ul>
+		</nav>
+
+		<div class="nav-wrapper-control">
+			<div class="inner">
+				<a class="nav-menu" role="button"><i class="icon icon-menu" aria-hidden="true"></i>Menu</a>
+				<a class="nav-search" title="Search" role="button" data-ghost-search><i class="icon icon-search" aria-hidden="true"></i></a>
+			</div>
+		</div>
+	</div>
+	<div class="nav-close" role="button" aria-label="Close"></div>
+
+	<section class="page-wrapper">
+
+		
+
+<div class="progress-container">
+	<span class="progress-bar"></span>
+</div>
+
+<header class="post-header ">
+	<div class="inner">
+		<span class="post-info">
+			<span class="post-type">Article</span>
+			<span class="post-count">Java</span>
+		</span>
+		<h1 class="post-title">Java 정리, 람다식과 함수형인터페이스 - 3. Supplier,Predicate,Consumer,Function 인터페이스</h1>
+		<div class="post-meta">
+			<div class="post-meta-avatars">
+					<figure class="post-meta-avatar avatar">
+					</figure>
+			</div>
+			<h4 class="post-meta-author"><a href="/author/gyutae/">Gyutae Han</a></h4>
+			<time datetime="05-12-2021">05 Dec 2021</time> &bull; 4 min read
+		</div>
+	</div>
+</header>
+
+<main class="content" role="main">
+	<article class="post tag-java tag-study tag-hash-import-2023-03-12-14-11 no-image">
+		<div class="inner">
+
+			<section class="post-content">
+				<!--kg-card-begin: markdown--><blockquote>
+<p>※이 글은 Java SE 8 기준으로 작성되었습니다.</p>
+</blockquote>
+<p>자바에서 기본적으로 제공되는 <strong>함수형 인터페이스</strong>는 <strong>java.util.function</strong>에 포함되어있는데, 대표적으로 <strong>Supplier,Predicate,Consumer,Function</strong>가 있음.</p>
+<h2 id="1-supplier-%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4">1. Supplier 인터페이스</h2>
+<pre><code class="language-java">package java.util.function;
+
+@FunctionalInterface
+public interface Supplier&lt;T&gt; {
+    T get();
+}
+</code></pre>
+<p><strong>Supplier</strong> 인터페이스는 인수가 없고 특정 값을 리턴을 하는 특징이 있음.</p>
+<p><strong>get</strong>이라는 추상 메서드을 이용함.</p>
+<h2 id="%EC%82%AC%EC%9A%A9%EB%B2%95">사용법</h2>
+<pre><code class="language-java">Supplier&lt;Integer&gt; si = ()-&gt; 10;
+System.out.println(si.get()); // 10 출력
+
+Supplier&lt;Boolean&gt; sb = ()-&gt; true;
+System.out.println(sb.get()); // true 출력
+
+Supplier&lt;String&gt; ss = ()-&gt; &quot;result&quot;;
+System.out.println(ss.get()); // result 출력
+</code></pre>
+<h2 id="2-predicate-%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4">2. Predicate 인터페이스</h2>
+<pre><code class="language-java">package java.util.function;
+
+import java.util.Objects;
+
+@FunctionalInterface
+public interface Predicate&lt;T&gt; {
+
+    boolean test(T t);
+
+    default Predicate&lt;T&gt; and(Predicate&lt;? super T&gt; other) {
+        Objects.requireNonNull(other);
+        return (t) -&gt; test(t) &amp;&amp; other.test(t);
+    }
+
+    default Predicate&lt;T&gt; negate() {
+        return (t) -&gt; !test(t);
+    }
+
+    default Predicate&lt;T&gt; or(Predicate&lt;? super T&gt; other) {
+        Objects.requireNonNull(other);
+        return (t) -&gt; test(t) || other.test(t);
+    }
+
+    static &lt;T&gt; Predicate&lt;T&gt; isEqual(Object targetRef) {
+        return (null == targetRef)
+                ? Objects::isNull
+                : object -&gt; targetRef.equals(object);
+    }
+}
+
+</code></pre>
+<p><strong>Predicate</strong> 인터페이스는 하나의 인수를 갖고 boolean 값을 리턴함.</p>
+<p><strong>test</strong>이라는 추상 메서드을 이용함.</p>
+<p><strong>Static 메서드</strong>인 <strong>isEqual</strong>과 <strong>default 메서드</strong>인 <strong>and</strong>, <strong>negate</strong>, <strong>or</strong>를 들고있음.</p>
+<h2 id="%EC%82%AC%EC%9A%A9%EB%B2%95">사용법</h2>
+<pre><code class="language-java">Predicate&lt;Integer&gt; p1 = (v)-&gt; v.equals(10); // 들어온 인수와 10이 같은지 비교
+Predicate&lt;Integer&gt; p2 = (v)-&gt; v.equals(20); //  들어온 인수와 20이 같은지 비교
+
+// 인수 10
+System.out.println(p1.test(10)); // true 출력
+// 인수 10 (negate: 논리부정, ~p1)
+System.out.println(p1.negate().test(10)); // false 출력
+// 인수 20 (and: 논리AND, p1 &amp; p2)
+System.out.println(p1.and(p2).test(20)); // false 출력
+// 인수 20 (or: 논리OR,  p1 | p2)
+System.out.println(p1.or(p2).test(20)); // true 출력
+// 인수 10 (10과 같은지 비교)
+System.out.println(Predicate.isEqual(10).test(10)); // true 출력
+</code></pre>
+<h2 id="3-consumer-%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4">3. Consumer 인터페이스</h2>
+<pre><code class="language-java">package java.util.function;
+
+import java.util.Objects;
+
+
+@FunctionalInterface
+public interface Consumer&lt;T&gt; {
+    void accept(T t);
+
+    default Consumer&lt;T&gt; andThen(Consumer&lt;? super T&gt; after) {
+        Objects.requireNonNull(after);
+        return (T t) -&gt; { accept(t); after.accept(t); };
+    }
+}
+
+</code></pre>
+<p><strong>Consumer</strong> 인터페이스는 하나의 인수를 갖고 void를 리턴함.</p>
+<p><strong>accept</strong>이라는 추상 메서드을 이용함.</p>
+<p><strong>default 메서드</strong>인 <strong>andThen</strong>를 들고있음.</p>
+<h2 id="%EC%82%AC%EC%9A%A9%EB%B2%95">사용법</h2>
+<pre><code class="language-java">Consumer&lt;Integer&gt; c1 = (v) -&gt; System.out.println(v + &quot;: c1&quot;);
+Consumer&lt;Integer&gt; c2 = (v) -&gt; System.out.println(v + &quot;: c2&quot;);
+// 인수 10
+c1.accept(10); // 10: c1 출력
+// 인수 10, 처음 c1이 실행되고 c2가 실행됨.
+// c1에서 예외가 터졌을 경우는 즉시 중단됨.
+c1.andThen(c2).accept(10);  // 10: c1
+														// 10: c2 출력
+
+</code></pre>
+<h2 id="4-function-%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4">4. Function 인터페이스</h2>
+<pre><code class="language-java">package java.util.function;
+
+import java.util.Objects;
+
+@FunctionalInterface
+public interface Function&lt;T, R&gt; {
+    R apply(T t);
+
+    default &lt;V&gt; Function&lt;V, R&gt; compose(Function&lt;? super V, ? extends T&gt; before) {
+        Objects.requireNonNull(before);
+        return (V v) -&gt; apply(before.apply(v));
+    }
+
+    default &lt;V&gt; Function&lt;T, V&gt; andThen(Function&lt;? super R, ? extends V&gt; after) {
+        Objects.requireNonNull(after);
+        return (T t) -&gt; after.apply(apply(t));
+    }
+  
+    static &lt;T&gt; Function&lt;T, T&gt; identity() {
+        return t -&gt; t;
+    }
+}
+
+</code></pre>
+<p><strong>Function</strong> 인터페이스는 하나의 인수를 갖고 특정 값을 리턴함.</p>
+<p><strong>apply</strong>이라는 추상 메서드을 이용함.</p>
+<p><strong>Static 메서드</strong>인 <strong>identity</strong>과 <strong>default 메서드</strong>인 <strong>compose</strong>, <strong>andThen</strong>를 들고있음.</p>
+<h2 id="%EC%82%AC%EC%9A%A9%EB%B2%95">사용법</h2>
+<pre><code class="language-java">Function&lt;Integer, String&gt; f1 = (arg) -&gt; &quot;result is &quot; + arg;
+Function&lt;Integer, Integer&gt; f2 = (arg) -&gt; ++arg;
+Function&lt;String, String&gt; f3 = (arg) -&gt; &quot;after result is &quot; + arg;
+
+// 인수 10
+System.out.println(f1.apply(10)); // result is 10 출력
+// 인수 10, f2에서 arg가 1이 증가가 된 값이 f1의 인수로서 들어감.
+System.out.println(f1.compose(f2).apply(10)); // result is 11 출력
+// 인수 10, f1의 결과값(String)이 f3의 인수로서 실행이 됨.
+System.out.println(f1.andThen(f3).apply(10)); // after result is result is 10 출력
+// 인수 10, 들어간 값 그대로 출력.
+System.out.println(Function.identity().apply(10)); // 10 출력
+</code></pre>
+<h2 id="%EC%9D%B4%EC%A0%84-%EA%B8%80">이전 글</h2>
+<p><a href="http://localhost/java-jeongri-ramdasiggwa-hamsuhyeonginteopeiseu-1-hamsuhyeong-inteopeiseuran/">Java 정리, 람다식과 함수형인터페이스 - 1. 함수형 인터페이스란?</a></p>
+<p><a href="http://localhost/java-jeongri-ramdasiggwa-hamsuhyeonginteopeiseu-2-runnable-inteopeiseu/">Java 정리, 람다식과 함수형인터페이스 - 2. Runnable 인터페이스</a></p>
+<!--kg-card-end: markdown-->
+			</section>
+
+			<section class="post-footer">
+
+				<div class="post-share">
+					<span class="post-info-label">Share</span>
+					<a title="Twitter" aria-label="Twitter" class="twitter" href="https://twitter.com/share?text=Java 정리, 람다식과 함수형인터페이스 - 3. Supplier,Predicate,Consumer,Function 인터페이스&url=http://localhost/java-jeongri-ramdasiggwa-hamsuhyeonginteopeiseu-3-supplier-predicate-consumer-function-inteopeiseu/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+						<i class="icon icon-twitter" aria-hidden="true"></i>
+					</a>
+					<a title="Facebook" aria-label="Facebook" class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://localhost/java-jeongri-ramdasiggwa-hamsuhyeonginteopeiseu-3-supplier-predicate-consumer-function-inteopeiseu/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+						<i class="icon icon-facebook" aria-hidden="true"></i>
+					</a>
+					<a title="LinkedIn" aria-label="LinkedIn" class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://localhost/java-jeongri-ramdasiggwa-hamsuhyeonginteopeiseu-3-supplier-predicate-consumer-function-inteopeiseu//&amp;title=Java 정리, 람다식과 함수형인터페이스 - 3. Supplier,Predicate,Consumer,Function 인터페이스" onclick="window.open(this.href, 'linkedin-share', 'width=930,height=720');return false;">
+						<i class="icon icon-linkedin" aria-hidden="true"></i>
+					</a>
+					<a title="Email" aria-label="Email" class="email" href="mailto:?subject=Java 정리, 람다식과 함수형인터페이스 - 3. Supplier,Predicate,Consumer,Function 인터페이스&amp;body=http://localhost/java-jeongri-ramdasiggwa-hamsuhyeonginteopeiseu-3-supplier-predicate-consumer-function-inteopeiseu/">
+						<i class="icon icon-mail" aria-hidden="true"></i>
+					</a>
+				</div>
+
+				<aside class="post-tags">
+					<span class="post-info-label">Topic</span>
+					<a href="/tag/java/">Java</a> <a href="/tag/study/">study</a>
+				</aside>
+
+			</section>
+
+
+
+
+			<aside class="post-nav">
+
+					<a class="post-nav-next" href="/java-jeongri-jeneriggwa-kolregsyeon-1-jenerig-generics-iran/">
+						<section class="post-nav-teaser">
+							<i class="icon icon-arrow-left" aria-label="Next post"></i>
+							<h2 class="post-nav-title">Java 정리, 제네릭과 콜렉션 - 1. 제네릭(Generics)이란?</h2>
+							<p class="post-nav-excerpt">※이 글은 Java SE 8 기준으로 작성되었습니다.
+
+
+
+제네릭(Generics)
+
+
+제네릭(Generics)은&hellip;</p>
+							<p class="post-nav-meta"><time datetime="11-12-2021">11 Dec 2021</time></p>
+						</section>
+					</a>
+
+					<a class="post-nav-prev" href="/java-jeongri-ramdasiggwa-hamsuhyeonginteopeiseu-2-runnable-inteopeiseu/">
+						<section class="post-nav-teaser">
+							<i class="icon icon-arrow-right" aria-label="Previous post"></i>
+							<h2 class="post-nav-title">Java 정리, 람다식과 함수형인터페이스 - 2. Runnable 인터페이스</h2>
+							<p class="post-nav-excerpt">※이 글은 Java SE 8 기준으로 작성되었습니다.
+
+
+
+package java.lang;
+
+@FunctionalInterface
+public&hellip;</p>
+							<p class="post-nav-meta"><time datetime="05-12-2021">05 Dec 2021</time></p>
+						</section>
+					</a>
+				<div class="clear"></div>
+			</aside>
+
+		</div>
+	</article>
+</main>
+
+
+
+
+		<div class="nav-footer">
+			<nav class="nav-wrapper" aria-label="Footer">
+				<span class="nav-copy">코딩터 &copy; 2023  <a class="nav-rss" title="RSS" href="http://localhost/rss/" target="_blank"><i class="icon icon-rss" aria-hidden="true"></i></a></span>
+				<span class="nav-credits">Published with <a href="https://ghost.org">Ghost</a> &bull; Theme <a href="https://github.com/zutrinken/attila">Attila</a> &bull; <a class="menu-item js-theme" href="#" data-system="System theme" data-dark="Dark theme" data-light="Light theme"><span class="theme-icon"></span><span class="theme-text">System theme</span> </a> </span>
+			</nav>
+		</div>
+
+	</section>
+
+	<script type="text/javascript" src="/assets/js/script.js?v=7c32fd6575"></script>
+
+	<script>
+  $(document).ready(function () {
+		var viewport = $(window);
+		var post = $('.post-content');
+		// Responsive videos with fitVids
+    post.fitVids();
+		// Format code blocks and add line numbers
+		function codestyling() {
+	    $('pre code').each(function(i, e) {
+				// Code highlight
+	      hljs.highlightElement(e);
+	      // No lines for plain text blocks
+	      if (!$(this).hasClass('language-text')) {
+	        var code = $(this);
+					// Calculate amount of lines
+	        var lines = code.html().split(/\n(?!$)/g).length;
+	        var numbers = [];
+	        if (lines > 1) {
+	          lines++;
+	        }
+	        for (i = 1; i < lines; i++) {
+	          numbers += '<span class="line" aria-hidden="true">' + i + '</span>';
+	        }
+	        code.parent().append('<div class="lines">' + numbers + '</div>');
+	      }
+	    });
+	  }
+	  codestyling();
+		// Reading progress bar on window top
+	  function readingProgress() {
+			var postBottom = post.offset().top + post.height();
+			var viewportHeight = viewport.height();
+      var progress = 100 - (((postBottom - (viewport.scrollTop() + viewportHeight) + viewportHeight / 3) / (postBottom - viewportHeight + viewportHeight / 3)) * 100);
+      $('.progress-bar').css('width', progress + '%');
+      (progress > 100) ? $('.progress-container').addClass('complete'): $('.progress-container').removeClass('complete');
+	  }
+	  readingProgress();
+		// Trigger reading progress
+	  viewport.on({
+	    'scroll': function() {
+	      readingProgress();
+	    },
+	    'resize': function() {
+	      readingProgress();
+	    },
+	    'orientationchange': function() {
+	      readingProgress();
+	    }
+	  });
+
+  });
+</script>
+
+
+	<script src="https://kit.fontawesome.com/0d50ab648c.js" crossorigin="anonymous"></script>
+
+</body>
+</html>

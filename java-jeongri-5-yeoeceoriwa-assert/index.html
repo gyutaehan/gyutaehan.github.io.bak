@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+	<title>Java 정리 5. Date, Time</title>
+	<meta name="HandheldFriendly" content="True" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<link rel="stylesheet" type="text/css" href="/assets/css/style.css?v=7c32fd6575" />
+
+	<script>
+			var siteUrl = 'http://localhost';
+	</script>
+
+	<script>
+			var localTheme = localStorage.getItem('attila_theme');
+			switch (localTheme) {
+					case 'dark':
+							document.documentElement.classList.add('theme-dark');
+							break;
+					case 'light':
+							document.documentElement.classList.add('theme-light');
+							break;
+					default:
+							break;
+			}
+	</script>
+
+
+
+			<style>
+				.theme-dark:root {
+				  --ghost-accent-color: #ff6633;
+				}
+				@media (prefers-color-scheme: dark) {
+				  html:not(.theme-light):root {
+				    --ghost-accent-color: #ff6633;
+				  }
+				}
+			</style>
+
+	<link rel="canonical" href="http://localhost/java-jeongri-5-yeoeceoriwa-assert/" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <link rel="amphtml" href="http://localhost/java-jeongri-5-yeoeceoriwa-assert/amp/" />
+    
+    <meta property="og:site_name" content="코딩터" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Java 정리 5. Date, Time" />
+    <meta property="og:description" content="※이 글은 Java SE 8 기준으로 작성되었습니다.
+
+
+
+이 장에서 다룰 Date와 Time의 API
+
+
+이 장에서 다룰 날짜, 시간 관련 API는 java.util의 Date, Calendar 같은 클래스가 아닌 Java SE 8에서 추가된 java.time패키지에 관련된 내용이다.
+
+
+
+클래스 종류
+
+
+TemporalAccssor 인터페이스와 하위 클래스들
+
+
+
+
+
+ * TemporalAccessor
+
+
+시간을 표현하는 클래스를 만들기 위해서 사용하는 인터페이스이다.
+
+
+※TemporalAccessor," />
+    <meta property="og:url" content="http://localhost/java-jeongri-5-yeoeceoriwa-assert/" />
+    <meta property="article:published_time" content="2022-03-13T04:42:54.000Z" />
+    <meta property="article:modified_time" content="2022-03-13T04:42:54.000Z" />
+    <meta property="article:tag" content="Java" />
+    <meta property="article:tag" content="study" />
+    <meta property="article:tag" content="Date" />
+    <meta property="article:tag" content="Time" />
+    
+    <meta property="article:publisher" content="https://www.facebook.com/100017130408671" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Java 정리 5. Date, Time" />
+    <meta name="twitter:description" content="※이 글은 Java SE 8 기준으로 작성되었습니다.
+
+
+
+이 장에서 다룰 Date와 Time의 API
+
+
+이 장에서 다룰 날짜, 시간 관련 API는 java.util의 Date, Calendar 같은 클래스가 아닌 Java SE 8에서 추가된 java.time패키지에 관련된 내용이다.
+
+
+
+클래스 종류
+
+
+TemporalAccssor 인터페이스와 하위 클래스들
+
+
+
+
+
+ * TemporalAccessor
+
+
+시간을 표현하는 클래스를 만들기 위해서 사용하는 인터페이스이다.
+
+
+※TemporalAccessor," />
+    <meta name="twitter:url" content="http://localhost/java-jeongri-5-yeoeceoriwa-assert/" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Gyutae Han" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Java, study, Date, Time" />
+    <meta name="twitter:site" content="@trapkka997" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "코딩터",
+        "url": "http://localhost/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "http://localhost/favicon.ico"
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Gyutae Han",
+        "url": "http://localhost/author/gyutae/",
+        "sameAs": []
+    },
+    "headline": "Java 정리 5. Date, Time",
+    "url": "http://localhost/java-jeongri-5-yeoeceoriwa-assert/",
+    "datePublished": "2022-03-13T04:42:54.000Z",
+    "dateModified": "2022-03-13T04:42:54.000Z",
+    "keywords": "Java, study, Date, Time",
+    "description": "※이 글은 Java SE 8 기준으로 작성되었습니다.\n\n\n\n이 장에서 다룰 Date와 Time의 API\n\n\n이 장에서 다룰 날짜, 시간 관련 API는 java.util의 Date, Calendar 같은 클래스가 아닌 Java SE 8에서 추가된 java.time패키지에 관련된 내용이다.\n\n\n\n클래스 종류\n\n\nTemporalAccssor 인터페이스와 하위 클래스들\n\n\n\n\n\n * TemporalAccessor\n\n\n시간을 표현하는 클래스를 만들기 위해서 사용하는 인터페이스이다.\n\n\n※TemporalAccessor, Tempora는 실제로 사용하는 경우는 많이 없으므로 각각의 메서드에 대한 설명만 남김\n\n\npackage java.time.temporal;\n\npublic interface TemporalAccessor {\n    // 지정된 필드가 서포트되어있는가 체크함\n    boolean isSupported(TemporalField field);\n\n    // 지정된 필드의 유효한 값의",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://localhost/"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 5.38" />
+    <link rel="alternate" type="application/rss+xml" title="코딩터" href="http://localhost/rss/" />
+    <script defer src="https://cdn.jsdelivr.net/ghost/portal@~2.25/umd/portal.min.js" data-ghost="http://localhost/" data-key="f1bf6fdeb63e0aba7cabc15196" data-api="http://localhost/ghost/api/content/" crossorigin="anonymous"></script><style id="gh-members-styles">.gh-post-upgrade-cta-content,
+.gh-post-upgrade-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+    width: 100%;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.gh-post-upgrade-cta-content {
+    border-radius: 8px;
+    padding: 40px 4vw;
+}
+
+.gh-post-upgrade-cta h2 {
+    color: #ffffff;
+    font-size: 28px;
+    letter-spacing: -0.2px;
+    margin: 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta p {
+    margin: 20px 0 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta small {
+    font-size: 16px;
+    letter-spacing: -0.2px;
+}
+
+.gh-post-upgrade-cta a {
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: 500;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a:hover {
+    color: #ffffff;
+    opacity: 0.8;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a.gh-btn {
+    display: block;
+    background: #ffffff;
+    text-decoration: none;
+    margin: 28px 0 0;
+    padding: 8px 18px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.gh-post-upgrade-cta a.gh-btn:hover {
+    opacity: 0.92;
+}</style>
+    <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/sodo-search.min.js" data-key="f1bf6fdeb63e0aba7cabc15196" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/main.css" data-sodo-search="http://localhost/" crossorigin="anonymous"></script>
+    <link href="http://localhost/webmentions/receive/" rel="webmention" />
+    <script defer src="/public/cards.min.js?v=7c32fd6575"></script>
+    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=7c32fd6575">
+    <script defer src="/public/member-attribution.min.js?v=7c32fd6575"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<!-- 
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KMJDLT47M7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KMJDLT47M7');
+</script>
+ -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4PQM83TTBG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4PQM83TTBG');
+</script>
+<script data-ad-client="ca-pub-5386847665218807" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>var disqus = 'gyutaehan-me';</script><style>:root {--ghost-accent-color: #FF1A75;}</style>
+</head>
+
+<body class="post-template tag-java tag-study tag-date tag-time tag-hash-import-2023-03-12-14-11">
+
+	<div class="nav-header">
+		<nav class="nav-wrapper" aria-label="Main">
+				<ul>
+		<li class="nav-home"><a href="http://localhost:2368/"><span>Home</span></a></li>
+		<li class="nav-study"><a href="http://localhost:2368/tag/study/"><span>Study</span></a></li>
+		<li class="nav-kubernetes"><a href="http://localhost:2368/tag/Kubernetes/"><span>Kubernetes</span></a></li>
+		<li class="nav-ibm-c-louders"><a href="http://localhost:2368/tag/ibmclouders/"><span>IBM C:LOUDERs</span></a></li>
+		<li class="nav-author"><a href="http://localhost:2368/contact/"><span>Author</span></a></li>
+</ul>
+
+				<ul class="nav-meta">
+  <li class="nav-twitter">
+    <a aria-label="Twitter" href="https://twitter.com/trapkka997" title="@trapkka997" target="_blank">
+      <i class="icon icon-twitter" aria-hidden="true"></i>
+      <span>@trapkka997</span>
+    </a>
+  </li>
+  <li class="nav-facebook">
+    <a aria-label="Facebook" href="https://www.facebook.com/100017130408671" title="100017130408671" target="_blank">
+      <i class="icon icon-facebook" aria-hidden="true"></i>
+      <span>100017130408671</span>
+    </a>
+  </li>
+  <li class="nav-search">
+    <a title="Search" data-ghost-search>
+      <i class="icon icon-search" aria-hidden="true"></i>
+      <span>Search</span>
+    </a>
+  </li>
+</ul>
+		</nav>
+
+		<div class="nav-wrapper-control">
+			<div class="inner">
+				<a class="nav-menu" role="button"><i class="icon icon-menu" aria-hidden="true"></i>Menu</a>
+				<a class="nav-search" title="Search" role="button" data-ghost-search><i class="icon icon-search" aria-hidden="true"></i></a>
+			</div>
+		</div>
+	</div>
+	<div class="nav-close" role="button" aria-label="Close"></div>
+
+	<section class="page-wrapper">
+
+		
+
+<div class="progress-container">
+	<span class="progress-bar"></span>
+</div>
+
+<header class="post-header ">
+	<div class="inner">
+		<span class="post-info">
+			<span class="post-type">Article</span>
+			<span class="post-count">Java</span>
+		</span>
+		<h1 class="post-title">Java 정리 5. Date, Time</h1>
+		<div class="post-meta">
+			<div class="post-meta-avatars">
+					<figure class="post-meta-avatar avatar">
+					</figure>
+			</div>
+			<h4 class="post-meta-author"><a href="/author/gyutae/">Gyutae Han</a></h4>
+			<time datetime="13-03-2022">13 Mar 2022</time> &bull; 6 min read
+		</div>
+	</div>
+</header>
+
+<main class="content" role="main">
+	<article class="post tag-java tag-study tag-date tag-time tag-hash-import-2023-03-12-14-11 no-image">
+		<div class="inner">
+
+			<section class="post-content">
+				<!--kg-card-begin: markdown--><h3 id="%E2%80%BB%EC%9D%B4-%EA%B8%80%EC%9D%80-java-se-8-%EA%B8%B0%EC%A4%80%EC%9C%BC%EB%A1%9C-%EC%9E%91%EC%84%B1%EB%90%98%EC%97%88%EC%8A%B5%EB%8B%88%EB%8B%A4">※이 글은 Java SE 8 기준으로 작성되었습니다.</h3>
+<h3 id="%EC%9D%B4-%EC%9E%A5%EC%97%90%EC%84%9C-%EB%8B%A4%EB%A3%B0-date%EC%99%80-time%EC%9D%98-api">이 장에서 다룰 Date와 Time의 API</h3>
+<p>이 장에서 다룰 날짜, 시간 관련 API는 java.util의 Date, Calendar 같은 클래스가 아닌  Java SE 8에서 추가된 java.time패키지에 관련된 내용이다.</p>
+<h3 id="%ED%81%B4%EB%9E%98%EC%8A%A4-%EC%A2%85%EB%A5%98">클래스 종류</h3>
+<p><strong>TemporalAccssor 인터페이스와 하위 클래스들</strong></p>
+<p><img src="http://localhost/content/images/2022/03/1.png" alt="1" loading="lazy"></p>
+<ul>
+<li>TemporalAccessor</li>
+</ul>
+<p>시간을 표현하는 클래스를 만들기 위해서 사용하는 인터페이스이다.</p>
+<p>※TemporalAccessor, Tempora는 실제로 사용하는 경우는 많이 없으므로  각각의 메서드에 대한 설명만 남김</p>
+<pre><code class="language-java">package java.time.temporal;
+
+public interface TemporalAccessor {
+    // 지정된 필드가 서포트되어있는가 체크함
+    boolean isSupported(TemporalField field);
+
+    // 지정된 필드의 유효한 값의 범위를 리턴
+    default ValueRange range(TemporalField field) {
+        if (field instanceof ChronoField) {
+            if (isSupported(field)) {
+                return field.range();
+            }
+            throw new UnsupportedTemporalTypeException(&quot;Unsupported field: &quot; + field);
+        }
+        Objects.requireNonNull(field, &quot;field&quot;);
+        return field.rangeRefinedBy(this);
+    }
+
+    // 지정된 필드의 값을 리턴(int)
+    default int get(TemporalField field) {
+        ValueRange range = range(field);
+        if (range.isIntValue() == false) {
+            throw new UnsupportedTemporalTypeException(&quot;Invalid field &quot; + field + &quot; for get() method, use getLong() instead&quot;);
+        }
+        long value = getLong(field);
+        if (range.isValidValue(value) == false) {
+            throw new DateTimeException(&quot;Invalid value for &quot; + field + &quot; (valid values &quot; + range + &quot;): &quot; + value);
+        }
+        return (int) value;
+    }
+
+    // 지정된 필드의 값을 리턴(long)
+    long getLong(TemporalField field);
+
+    // 날짜, 시간을 
+    default &lt;R&gt; R query(TemporalQuery&lt;R&gt; query) {
+        if (query == TemporalQueries.zoneId()
+                || query == TemporalQueries.chronology()
+                || query == TemporalQueries.precision()) {
+            return null;
+        }
+        return query.queryFrom(this);
+    }
+
+}
+
+</code></pre>
+<ul>
+<li>
+<p>Temporal</p>
+<p>TemporalAccessor의 서브 인터페이스</p>
+<p>※TemporalAccessor, Temporal는 실제로 사용하는 경우는 많이 없으므로 각각의 메서드에 대한 설명만 남김</p>
+<pre><code class="language-java">package java.time.temporal;
+
+import java.time.DateTimeException;
+
+public interface Temporal extends TemporalAccessor {
+
+    boolean isSupported(TemporalUnit unit);
+
+		// 
+    default Temporal with(TemporalAdjuster adjuster) {
+        return adjuster.adjustInto(this);
+    }
+		
+    Temporal with(TemporalField field, long newValue);
+
+  	// 기간을 더하여 같은 오브젝트를 반환
+    default Temporal plus(TemporalAmount amount) {
+        return amount.addTo(this);
+    }
+
+  	// 기간을 더하여 새로운 오브젝트를 반환
+    Temporal plus(long amountToAdd, TemporalUnit unit);
+
+  	// 기간을 빼고 그 오브젝트를 반환
+    default Temporal minus(TemporalAmount amount) {
+        return amount.subtractFrom(this);
+    }
+
+  	// 기간을 빼고 새로운 오브젝트를 반환
+    default Temporal minus(long amountToSubtract, TemporalUnit unit) {
+        return (amountToSubtract == Long.MIN_VALUE ? plus(Long.MAX_VALUE, unit).plus(1, unit) : plus(-amountToSubtract, unit));
+    }
+
+  	// 지정한 기간까지의 시간양을 계산
+    long until(Temporal endExclusive, TemporalUnit unit);
+
+}
+
+</code></pre>
+</li>
+<li>
+<p>LocalDate</p>
+<p>날짜만 가지고 있음</p>
+<pre><code class="language-java">public class Test{
+    public static void main(String... args) {
+        LocalDate.now(); //2022-02-20 #오늘 날짜를 반환
+        LocalDate.of(2016, Month.APRIL, 1); //2016-04-01
+        LocalDate.parse(&quot;2016-04-01&quot;); //2016-04-01
+      
+        LocalDate d1 = LocalDate.of(2022, Month.APRIL, 1);
+        LocalDate d2 = LocalDate.of(2022, Month.MAY, 1);
+        d1.isBefore(d2); // true #source의 날짜가 작을 경우, true
+        d1.isEqual(d2); // false #source의 날짜가 같을 경우, true
+        d1.isAfter(d2); // false #source의 날짜가 클 경우, true
+    }
+}
+
+
+</code></pre>
+</li>
+<li>
+<p>LocalTime</p>
+<p>시간만 가지고 있음</p>
+<pre><code class="language-java">public class Test{
+    public static void main(String... args) {
+        System.out.println(LocalTime.now()); //19:28:33.979 #현재 시간을 반환
+        System.out.println(LocalTime.of(10, 30, 1, 1)); //10:30:01.000000001
+        System.out.println(LocalTime.parse(&quot;19:27:49&quot;)); //19:27:49
+
+        LocalTime t1 = LocalTime.of(10, 30, 1, 1);
+        LocalTime t2 = LocalTime.of(15, 00, 59, 1);
+        System.out.println(t1.isBefore(t2)); // true #source의 시간이 작을 경우, true
+        System.out.println(t1.isAfter(t2)); // false #source의 시간이 클 경우, true
+    }
+}
+</code></pre>
+</li>
+<li>
+<p>LocalDateTime</p>
+<p>날짜의 시간, 둘 다 가지고 있음.</p>
+</li>
+<li>
+<p>OffsetTime</p>
+<p>LocalTime과 ZoneOffset를 가진 클래스.</p>
+</li>
+<li>
+<p>OffsetDateTime</p>
+<p>OffsetDateTime과 ZoneOffset를 가진 클래스.</p>
+</li>
+</ul>
+<p><strong>TemporalUnit 인터페이스와 ChronoUnit 열거형</strong></p>
+<p><img src="http://localhost/content/images/2022/03/2.png" alt="2" loading="lazy"></p>
+<ul>
+<li>
+<p>TemporalUnit</p>
+<p>날짜나 시간의 단위를 나타내는 인터페이스.</p>
+</li>
+<li>
+<p>ChronoUnit</p>
+<p>TemporalUnit의 하위 열거형</p>
+<pre><code class="language-java">public class Test{
+    public static void main(String... args) {
+        // 시간 계산
+        LocalDate start = LocalDate.now(); // 2022-02-20 #오늘 날짜를 반환
+        LocalDate end = LocalDate.of(2022, Month.FEBRUARY, 30); // 2022-02-28
+        ChronoUnit.DAYS.addTo(start, 5); // 2022-02-25 #start에 5일을 더함
+        ChronoUnit.DAYS.between(start, end); // 8 # start - end 날짜를 뺌
+
+        // 현재 타임존을 나타내는 인터페이스를 습득
+        ZoneId.systemDefault(); // Asia/Tokyo 
+    }
+}
+
+
+</code></pre>
+<blockquote>
+<ul>
+<li>DAYS</li>
+</ul>
+<p>1일마다의 단위</p>
+<ul>
+<li>HOURS</li>
+</ul>
+<p>한 시간마다의 단위</p>
+<ul>
+<li>MINUTES</li>
+</ul>
+<p>1분마다의 단위</p>
+<ul>
+<li>MONTHS</li>
+</ul>
+<p>한 달마다의 단위</p>
+<ul>
+<li>SECONDS</li>
+</ul>
+<p>1초마다의 단위</p>
+<ul>
+<li>WEEKS</li>
+</ul>
+<p>1주마다의 단위</p>
+<ul>
+<li>YEARS</li>
+</ul>
+<p>1년마다의 단위</p>
+</blockquote>
+</li>
+</ul>
+<p><strong>TemporalAmount 인터페이스와 하위 클래스들</strong></p>
+<p><img src="http://localhost/content/images/2022/03/3.png" alt="3" loading="lazy"></p>
+<ul>
+<li>
+<p>TemporalAmount</p>
+<p>날짜나 시간의 단위를 나타내는 인터페이스.</p>
+</li>
+<li>
+<p>Period</p>
+<p>TemporalAmount의 하위 클래스</p>
+<p>기간의 간격을 구할때 사용함.</p>
+<pre><code class="language-java">public class Test{
+    public static void main(String... args) {
+        LocalDate start = LocalDate.now(); // 2022-03-13
+        LocalDate end = LocalDate.of(2023, Month.APRIL, 30); //2023-04-30
+        // 일자 간격을 구하는
+        Period p1 = Period.between(start,end); //  일자간격
+        System.out.println(&quot;start : &quot; + start);
+        System.out.println(&quot;end : &quot; + end);
+        System.out.println(&quot;간격 : &quot; + p1.getYears() + &quot;년&quot; + p1.getMonths() + &quot;개월&quot; +p1.getDays() + &quot;일&quot;); // 간격 : 1년1개월7일
+    }
+}
+</code></pre>
+</li>
+<li>
+<p>Duration</p>
+<p>TemporalAmount의 하위 클래스</p>
+<p>시간의 간격을 구할 때 사용함</p>
+<pre><code class="language-java">public class Test{
+    public static void main(String... args) {
+        LocalTime start = LocalTime.of(10,12,30, 50);
+        LocalTime end = LocalTime.of(20,30,50, 60);
+
+        Duration p2 = Duration.between(start,end); //  시간 간격
+        System.out.println(&quot;간격 : &quot; + p2.getNano() + &quot;나노초 &quot; + p2.getSeconds() + &quot;초&quot;); // 간격 : 10나노초 37100초
+    }
+}
+
+
+</code></pre>
+<p><strong>그 외</strong></p>
+</li>
+<li>
+<p>DateTimeFormatter</p>
+<p>Date의 표시형식 설정(Formatter)하기 위한 클래스</p>
+<pre><code class="language-java">public class Test{
+    public static void main(String... args) {
+        //DateTimeFommater 인스턴스화하는 세 가지 방법
+        DateTimeFormatter formatter = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM);
+        DateTimeFormatter formatter1 = DateTimeFormatter.ISO_DATE;
+        DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern(&quot;YYYY-DD&quot;);
+    }
+}
+
+
+</code></pre>
+</li>
+<li>
+<p>Instant</p>
+<p>시간의 단일 지점을 표시하는 인터페이스. Instant는 그 순간이라는 의미가 있음</p>
+<p>예를들어 1970년 1월 1일 오전 0시0분0초부터의 경과한 초를 구함.</p>
+<pre><code class="language-java">public class Test{
+    public static void main(String... args) {
+        // Instant 인터페이스
+        Instant instant1 = Instant.now();
+        Instant instant2 = ZonedDateTime.now().toInstant();
+        Instant instant3 = Instant.ofEpochSecond(0);
+        Instant instant4 = new Date().toInstant(); //추가됨
+        Instant instant5 = Calendar.getInstance().toInstant(); // 추가됨
+    }
+}
+
+
+</code></pre>
+</li>
+</ul>
+<!--kg-card-end: markdown-->
+			</section>
+
+			<section class="post-footer">
+
+				<div class="post-share">
+					<span class="post-info-label">Share</span>
+					<a title="Twitter" aria-label="Twitter" class="twitter" href="https://twitter.com/share?text=Java 정리 5. Date, Time&url=http://localhost/java-jeongri-5-yeoeceoriwa-assert/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+						<i class="icon icon-twitter" aria-hidden="true"></i>
+					</a>
+					<a title="Facebook" aria-label="Facebook" class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://localhost/java-jeongri-5-yeoeceoriwa-assert/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+						<i class="icon icon-facebook" aria-hidden="true"></i>
+					</a>
+					<a title="LinkedIn" aria-label="LinkedIn" class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://localhost/java-jeongri-5-yeoeceoriwa-assert//&amp;title=Java 정리 5. Date, Time" onclick="window.open(this.href, 'linkedin-share', 'width=930,height=720');return false;">
+						<i class="icon icon-linkedin" aria-hidden="true"></i>
+					</a>
+					<a title="Email" aria-label="Email" class="email" href="mailto:?subject=Java 정리 5. Date, Time&amp;body=http://localhost/java-jeongri-5-yeoeceoriwa-assert/">
+						<i class="icon icon-mail" aria-hidden="true"></i>
+					</a>
+				</div>
+
+				<aside class="post-tags">
+					<span class="post-info-label">Topic</span>
+					<a href="/tag/java/">Java</a> <a href="/tag/study/">study</a> <a href="/tag/date/">Date</a> <a href="/tag/time/">Time</a>
+				</aside>
+
+			</section>
+
+
+
+
+			<aside class="post-nav">
+
+
+					<a class="post-nav-prev" href="/untitled/">
+						<section class="post-nav-teaser">
+							<i class="icon icon-arrow-right" aria-label="Previous post"></i>
+							<h2 class="post-nav-title">Java 정리 4. 예외처리와 Assert</h2>
+							<p class="post-nav-excerpt">※이 글은 Java SE 8 기준으로 작성되었습니다.
+
+
+
+예외처리에 대하여
+
+
+예외처리는 RuntimeException와 Checked&hellip;</p>
+							<p class="post-nav-meta"><time datetime="15-01-2022">15 Jan 2022</time></p>
+						</section>
+					</a>
+				<div class="clear"></div>
+			</aside>
+
+		</div>
+	</article>
+</main>
+
+
+
+
+		<div class="nav-footer">
+			<nav class="nav-wrapper" aria-label="Footer">
+				<span class="nav-copy">코딩터 &copy; 2023  <a class="nav-rss" title="RSS" href="http://localhost/rss/" target="_blank"><i class="icon icon-rss" aria-hidden="true"></i></a></span>
+				<span class="nav-credits">Published with <a href="https://ghost.org">Ghost</a> &bull; Theme <a href="https://github.com/zutrinken/attila">Attila</a> &bull; <a class="menu-item js-theme" href="#" data-system="System theme" data-dark="Dark theme" data-light="Light theme"><span class="theme-icon"></span><span class="theme-text">System theme</span> </a> </span>
+			</nav>
+		</div>
+
+	</section>
+
+	<script type="text/javascript" src="/assets/js/script.js?v=7c32fd6575"></script>
+
+	<script>
+  $(document).ready(function () {
+		var viewport = $(window);
+		var post = $('.post-content');
+		// Responsive videos with fitVids
+    post.fitVids();
+		// Format code blocks and add line numbers
+		function codestyling() {
+	    $('pre code').each(function(i, e) {
+				// Code highlight
+	      hljs.highlightElement(e);
+	      // No lines for plain text blocks
+	      if (!$(this).hasClass('language-text')) {
+	        var code = $(this);
+					// Calculate amount of lines
+	        var lines = code.html().split(/\n(?!$)/g).length;
+	        var numbers = [];
+	        if (lines > 1) {
+	          lines++;
+	        }
+	        for (i = 1; i < lines; i++) {
+	          numbers += '<span class="line" aria-hidden="true">' + i + '</span>';
+	        }
+	        code.parent().append('<div class="lines">' + numbers + '</div>');
+	      }
+	    });
+	  }
+	  codestyling();
+		// Reading progress bar on window top
+	  function readingProgress() {
+			var postBottom = post.offset().top + post.height();
+			var viewportHeight = viewport.height();
+      var progress = 100 - (((postBottom - (viewport.scrollTop() + viewportHeight) + viewportHeight / 3) / (postBottom - viewportHeight + viewportHeight / 3)) * 100);
+      $('.progress-bar').css('width', progress + '%');
+      (progress > 100) ? $('.progress-container').addClass('complete'): $('.progress-container').removeClass('complete');
+	  }
+	  readingProgress();
+		// Trigger reading progress
+	  viewport.on({
+	    'scroll': function() {
+	      readingProgress();
+	    },
+	    'resize': function() {
+	      readingProgress();
+	    },
+	    'orientationchange': function() {
+	      readingProgress();
+	    }
+	  });
+
+  });
+</script>
+
+
+	<script src="https://kit.fontawesome.com/0d50ab648c.js" crossorigin="anonymous"></script>
+
+</body>
+</html>
